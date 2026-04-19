@@ -1,0 +1,3 @@
+[build]
+publish = "apps/client/dist"
+command = "turbo run build --filter @ui/client"
