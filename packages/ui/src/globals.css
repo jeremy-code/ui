@@ -2,3 +2,8 @@
 @import "tw-animate-css";
 
 @source "src/";
+
+/* https://tailwindcss.com/docs/theme#referencing-other-variables */
+@theme inline {
+  --color-border: light-dark(var(--color-gray-300), var(--color-gray-700));
+}
