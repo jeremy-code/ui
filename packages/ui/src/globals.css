@@ -23,4 +23,5 @@
   --color-destructive: var(--color-red-600);
 
   --color-accent: var(--color-blue-600);
+  --color-accent-fg: var(--color-blue-50);
 }
