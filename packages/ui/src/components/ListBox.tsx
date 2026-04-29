@@ -3,12 +3,15 @@ import type { ComponentPropsWithRef } from "react";
 import { Check } from "lucide-react";
 import {
   Collection as ListBoxCollection,
+  type CollectionProps as ListBoxCollectionProps,
   Header as AriaHeader,
+  type HeaderProps as ListboxHeaderProps,
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
   type ListBoxItemProps,
   type ListBoxProps,
   ListBoxSection,
+  type ListBoxSectionProps,
   composeRenderProps,
 } from "react-aria-components";
 import { cn, tv } from "tailwind-variants";
@@ -90,6 +93,9 @@ export {
   ListBoxItem,
   type ListBoxItemProps,
   ListBoxHeader,
+  type ListboxHeaderProps,
   ListBoxSection,
+  type ListBoxSectionProps,
   ListBoxCollection,
+  type ListBoxCollectionProps,
 };
