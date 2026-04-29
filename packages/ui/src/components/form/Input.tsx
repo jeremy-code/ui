@@ -14,4 +14,4 @@ const Input = ({ className, ...props }: InputProps) => {
   );
 };
 
-export { Input };
+export { Input, type InputProps };
