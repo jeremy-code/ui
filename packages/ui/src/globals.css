@@ -19,4 +19,8 @@
   --color-fg: light-dark(var(--color-gray-950), var(--color-gray-50));
 
   --color-surface: light-dark(var(--color-gray-50), var(--color-gray-900));
+
+  --color-destructive: var(--color-red-600);
+
+  --color-accent: var(--color-blue-600);
 }
