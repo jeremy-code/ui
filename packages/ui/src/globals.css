@@ -25,3 +25,6 @@
   --color-accent: var(--color-blue-600);
   --color-accent-fg: var(--color-blue-50);
 }
+
+/* https://tailwindcss.com/docs/dark-mode#using-a-data-attribute */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
