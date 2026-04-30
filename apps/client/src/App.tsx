@@ -8,6 +8,7 @@ import { Link } from "@ui/ui/components/Link";
 import { ListBox, ListBoxItem } from "@ui/ui/components/ListBox";
 import { Popover, PopoverTrigger } from "@ui/ui/components/Popover";
 import { Select, SelectItem } from "@ui/ui/components/Select";
+import { Skeleton } from "@ui/ui/components/Skeleton";
 import { Input } from "@ui/ui/components/form/index";
 
 import { ThemeToggle } from "./components/ThemeToggle";
@@ -47,6 +48,7 @@ const App = () => {
           <SelectItem>Snake</SelectItem>
         </Select>
         <Input />
+        <Skeleton className="h-13 w-full" />
       </div>
     </ThemeProvider>
   );
