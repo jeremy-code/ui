@@ -71,4 +71,4 @@ const Checkbox = ({ className, children, ...props }: CheckboxProps) => {
   );
 };
 
-export { Checkbox, type CheckboxProps };
+export { Checkbox, type CheckboxProps, checkboxVariants };

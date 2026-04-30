@@ -1,4 +1,7 @@
-import { Group, type GroupProps } from "react-aria-components/Group";
+import {
+  Group,
+  type GroupProps as FieldGroupProps,
+} from "react-aria-components/Group";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv } from "tailwind-variants";
 
@@ -27,8 +30,6 @@ const fieldGroupVariants = tv({
   variants: fieldBorderVariants.variants,
 });
 
-type FieldGroupProps = GroupProps;
-
 const FieldGroup = ({ className, ...props }: FieldGroupProps) => {
   return (
     <Group
@@ -40,4 +41,9 @@ const FieldGroup = ({ className, ...props }: FieldGroupProps) => {
   );
 };
 
-export { FieldGroup, type FieldGroupProps };
+export {
+  FieldGroup,
+  type FieldGroupProps,
+  fieldBorderVariants,
+  fieldGroupVariants,
+};

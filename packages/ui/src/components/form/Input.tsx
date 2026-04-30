@@ -1,8 +1,8 @@
-import { composeRenderProps } from "react-aria-components";
 import {
   Input as AriaInput,
   type InputProps,
 } from "react-aria-components/Input";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv } from "tailwind-variants";
 
 const inputVariants = tv({
@@ -47,4 +47,4 @@ const Input = ({ className, ...props }: InputProps) => {
   );
 };
 
-export { Input, type InputProps };
+export { Input, type InputProps, inputVariants };

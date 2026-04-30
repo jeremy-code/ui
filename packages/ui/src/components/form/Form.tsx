@@ -27,4 +27,4 @@ const Form = ({ className, role, ...props }: FormProps) => {
   );
 };
 
-export { Form, type FormProps };
+export { Form, type FormProps, formVariants };

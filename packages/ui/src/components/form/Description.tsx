@@ -1,7 +1,8 @@
-import { Text, type TextProps } from "react-aria-components/Text";
+import {
+  Text,
+  type TextProps as DescriptionProps,
+} from "react-aria-components/Text";
 import { cn } from "tailwind-variants";
-
-type DescriptionProps = TextProps;
 
 const Description = ({ className, ...props }: DescriptionProps) => {
   return (

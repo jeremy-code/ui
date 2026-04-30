@@ -92,6 +92,7 @@ export {
   type ListBoxProps,
   ListBoxItem,
   type ListBoxItemProps,
+  listBoxItemVariants,
   ListBoxHeader,
   type ListboxHeaderProps,
   ListBoxSection,

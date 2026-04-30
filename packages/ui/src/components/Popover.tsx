@@ -76,4 +76,10 @@ const Popover = ({
   );
 };
 
-export { Popover, type PopoverProps, PopoverTrigger, type PopoverTriggerProps };
+export {
+  Popover,
+  type PopoverProps,
+  popoverVariants,
+  PopoverTrigger,
+  type PopoverTriggerProps,
+};

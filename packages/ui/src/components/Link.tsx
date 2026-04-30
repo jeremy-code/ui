@@ -44,4 +44,4 @@ const Link = ({ className, underline, color, ...props }: LinkProps) => {
   );
 };
 
-export { Link, type LinkProps };
+export { Link, type LinkProps, linkVariants };

@@ -90,6 +90,7 @@ const Select = <T extends object, M extends "single" | "multiple" = "single">({
 export {
   Select,
   type SelectProps,
+  selectVariants,
   SelectItem,
   type SelectItemProps,
   SelectSection,

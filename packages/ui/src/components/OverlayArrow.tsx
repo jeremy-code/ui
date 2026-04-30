@@ -31,4 +31,4 @@ const OverlayArrow = ({ className, ...props }: OverlayArrowProps) => {
   );
 };
 
-export { OverlayArrow };
+export { OverlayArrow, type OverlayArrowProps };
