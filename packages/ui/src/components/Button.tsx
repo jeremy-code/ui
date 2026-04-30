@@ -1,63 +1,84 @@
 import {
   Button as AriaButton,
-  composeRenderProps,
   type ButtonProps as AriaButtonProps,
 } from "react-aria-components";
-import { cn, tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
+
+import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 
 const buttonVariants = tv({
   base: [
-    "ring-offset-background inline-flex items-center justify-center rounded-md text-sm font-medium whitespace-nowrap transition-colors",
-    "data-disabled:pointer-events-none data-disabled:cursor-not-allowed data-disabled:opacity-50",
-    "data-focus-visible:ring-ring data-focus-visible:ring-2 data-focus-visible:ring-offset-2 data-focus-visible:outline-none",
-    "focus-visible:outline-none",
+    "relative inline-flex cursor-pointer items-center justify-center rounded align-middle font-medium transition select-none",
+    "shrink-0", // If inside a flex container, don't let the button shrink
+    "disabled:cursor-not-allowed disabled:opacity-50",
   ],
   variants: {
+    color: {
+      default: null,
+      accent: null,
+    },
     variant: {
-      default: "bg-primary text-primary-foreground data-hovered:bg-primary/90",
-      destructive:
-        "text-destructive-foreground bg-destructive data-hovered:bg-destructive/90",
-      outline:
-        "border-input bg-background border border-border data-hovered:bg-accent data-hovered:text-accent-fg",
-      secondary:
-        "bg-secondary text-secondary-foreground data-hovered:bg-secondary/80",
-      ghost: "data-hovered:text-accent-foreground data-hovered:bg-accent",
-      link: "text-primary underline-offset-4 data-hovered:underline",
+      muted: null,
+      ghost: null,
+      surface: "border",
+      outline: "border",
     },
     size: {
-      default: "h-10 px-4 py-2",
-      sm: "h-9 rounded-md px-3",
-      lg: "h-11 rounded-md px-8",
-      icon: "size-10",
+      xs: "h-8 min-w-8 gap-1 px-2.5 text-xs/4",
+      sm: "h-9 min-w-9 gap-2 px-3.5 text-sm/5",
+      md: "h-10 min-w-10 gap-2 px-4 text-sm/5",
+      lg: "h-11 min-w-11 gap-3 px-5 text-base/6",
+      icon: "h-10 min-w-10 gap-2 text-sm/5",
+      "icon-sm": "h-9 min-w-9 gap-2 text-sm/5",
+      "icon-xs": "h-8 min-w-8 gap-1 text-xs/4",
     },
   },
+  compoundVariants: [
+    {
+      color: "default",
+      variant: "muted",
+      className: "bg-bg-muted hover:bg-border",
+    },
+    {
+      color: "accent",
+      variant: "muted",
+      className: "bg-accent text-white hover:bg-accent-hover",
+    },
+    {
+      color: "default",
+      variant: "surface",
+      className: "border-border bg-bg-muted hover:bg-border",
+    },
+    {
+      color: "default",
+      variant: "ghost",
+      className: "bg-transparent hover:bg-bg-muted",
+    },
+    {
+      color: "default",
+      variant: "outline",
+      className: "border-border bg-transparent hover:bg-bg-muted",
+    },
+  ],
   defaultVariants: {
-    variant: "default",
-    size: "default",
+    color: "default",
+    variant: "muted",
+    size: "md",
   },
 });
 
-interface ButtonProps
-  extends AriaButtonProps, VariantProps<typeof buttonVariants> {}
+type ButtonProps = AriaButtonProps & VariantProps<typeof buttonVariants>;
 
-const Button = ({ className, variant, size, ...props }: ButtonProps) => {
+const Button = ({ className, variant, color, size, ...props }: ButtonProps) => {
   return (
     <AriaButton
-      className={composeRenderProps(
+      className={composeTailwindRenderProps(
         className,
-        (className) =>
-          cn(
-            buttonVariants({
-              variant,
-              size,
-              className,
-            }),
-          ) ?? "",
+        buttonVariants({ variant, size, color }),
       )}
       {...props}
     />
   );
 };
 
-export { Button, buttonVariants };
-export type { ButtonProps };
+export { Button, buttonVariants, type ButtonProps };
