@@ -8,7 +8,7 @@ import { cn, tv, type VariantProps } from "tailwind-variants";
 const buttonVariants = tv({
   base: [
     "ring-offset-background inline-flex items-center justify-center rounded-md text-sm font-medium whitespace-nowrap transition-colors",
-    "data-disabled:pointer-events-none data-disabled:opacity-50",
+    "data-disabled:pointer-events-none data-disabled:cursor-not-allowed data-disabled:opacity-50",
     "data-focus-visible:ring-ring data-focus-visible:ring-2 data-focus-visible:ring-offset-2 data-focus-visible:outline-none",
     "focus-visible:outline-none",
   ],

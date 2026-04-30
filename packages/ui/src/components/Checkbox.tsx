@@ -13,7 +13,7 @@ const checkboxVariants = tv({
   variants: {
     isDisabled: {
       false: "text-color-fg-bolder",
-      true: "text-border forced-colors:text-[GrayText]",
+      true: "cursor-not-allowed text-border forced-colors:text-[GrayText]",
     },
   },
 });

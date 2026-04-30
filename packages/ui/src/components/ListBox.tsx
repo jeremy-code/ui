@@ -49,7 +49,7 @@ const listBoxItemVariants = tv({
       ],
     },
     isDisabled: {
-      true: "opacity-80 forced-colors:text-[GrayText]",
+      true: "cursor-not-allowed opacity-80 forced-colors:text-[GrayText]",
     },
   },
 });
