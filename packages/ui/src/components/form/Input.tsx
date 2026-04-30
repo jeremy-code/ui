@@ -1,4 +1,7 @@
-import { Input as AriaInput, type InputProps } from "react-aria-components";
+import {
+  Input as AriaInput,
+  type InputProps,
+} from "react-aria-components/Input";
 
 import { composeTailwindRenderProps } from "../../utils/composeTailwindRenderProps";
 

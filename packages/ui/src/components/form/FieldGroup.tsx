@@ -1,8 +1,5 @@
-import {
-  composeRenderProps,
-  Group,
-  type GroupProps,
-} from "react-aria-components";
+import { Group, type GroupProps } from "react-aria-components/Group";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv } from "tailwind-variants";
 
 import { focusRing } from "../../utils/focusRing";

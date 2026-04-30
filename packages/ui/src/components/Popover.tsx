@@ -5,8 +5,8 @@ import {
   type DialogTriggerProps as PopoverTriggerProps,
   Popover as AriaPopover,
   type PopoverProps as AriaPopoverProps,
-  composeRenderProps,
-} from "react-aria-components";
+} from "react-aria-components/Popover";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
 
 import { OverlayArrow } from "./OverlayArrow";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";

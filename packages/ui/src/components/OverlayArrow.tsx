@@ -1,7 +1,7 @@
 import {
   OverlayArrow as AriaOverlayArrow,
   type OverlayArrowProps as AriaOverlayArrowProps,
-} from "react-aria-components";
+} from "react-aria-components/Popover";
 import { cn } from "tailwind-variants";
 
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";

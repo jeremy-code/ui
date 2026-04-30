@@ -12,8 +12,8 @@ import {
   type ListBoxProps,
   ListBoxSection,
   type ListBoxSectionProps,
-  composeRenderProps,
-} from "react-aria-components";
+} from "react-aria-components/ListBox";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { cn, tv } from "tailwind-variants";
 
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
@@ -49,7 +49,7 @@ const listBoxItemVariants = tv({
       ],
     },
     isDisabled: {
-      true: "cursor-not-allowed opacity-80 forced-colors:text-[GrayText]",
+      true: "cursor-not-allowed text-fg-subtle forced-colors:text-[GrayText]",
     },
   },
 });

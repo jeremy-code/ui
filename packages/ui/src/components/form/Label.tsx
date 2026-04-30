@@ -1,4 +1,7 @@
-import { Label as AriaLabel, type LabelProps } from "react-aria-components";
+import {
+  Label as AriaLabel,
+  type LabelProps,
+} from "react-aria-components/Label";
 import { tv } from "tailwind-variants";
 
 const labelVariants = tv({

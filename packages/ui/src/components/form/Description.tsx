@@ -1,4 +1,4 @@
-import { Text, type TextProps } from "react-aria-components";
+import { Text, type TextProps } from "react-aria-components/Text";
 import { cn } from "tailwind-variants";
 
 type DescriptionProps = TextProps;

@@ -1,7 +1,7 @@
 import {
   Button as AriaButton,
   type ButtonProps as AriaButtonProps,
-} from "react-aria-components";
+} from "react-aria-components/Button";
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
