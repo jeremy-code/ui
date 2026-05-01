@@ -2,7 +2,7 @@ import "@ui/ui/globals.css";
 
 import { ThemeProvider } from "next-themes";
 
-import { Button } from "@ui/ui/components/Button";
+import { Button, buttonVariants } from "@ui/ui/components/Button";
 import { Checkbox } from "@ui/ui/components/Checkbox";
 import { Link } from "@ui/ui/components/Link";
 import { ListBox, ListBoxItem } from "@ui/ui/components/ListBox";
@@ -12,6 +12,7 @@ import { Select, SelectItem } from "@ui/ui/components/Select";
 import { Skeleton } from "@ui/ui/components/Skeleton";
 import { TextField } from "@ui/ui/components/TextField";
 import { Focusable, Tooltip, TooltipTrigger } from "@ui/ui/components/Tooltip";
+import { Github } from "@ui/ui/components/icons/Github";
 
 import { ThemeToggle } from "./components/ThemeToggle";
 
@@ -58,6 +59,15 @@ const App = () => {
           </Focusable>
           <Tooltip>Tooltip has been opened</Tooltip>
         </TooltipTrigger>
+        <Link
+          underline={false}
+          className={buttonVariants()}
+          href="https://github.com/jeremy-code/ui"
+          target="_blank"
+        >
+          <Github aria-hidden />
+          Github
+        </Link>
       </div>
     </ThemeProvider>
   );
