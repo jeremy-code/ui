@@ -11,6 +11,7 @@ import { Popover, PopoverTrigger } from "@ui/ui/components/Popover";
 import { Select, SelectItem } from "@ui/ui/components/Select";
 import { Skeleton } from "@ui/ui/components/Skeleton";
 import { TextField } from "@ui/ui/components/TextField";
+import { Focusable, Tooltip, TooltipTrigger } from "@ui/ui/components/Tooltip";
 
 import { ThemeToggle } from "./components/ThemeToggle";
 
@@ -51,6 +52,12 @@ const App = () => {
         <Skeleton className="h-13 w-full" />
         <NumberField defaultValue={1024} minValue={0} label="Cents" />
         <TextField label="Poem" />
+        <TooltipTrigger>
+          <Focusable>
+            <span role="button">Test</span>
+          </Focusable>
+          <Tooltip>Tooltip has been opened</Tooltip>
+        </TooltipTrigger>
       </div>
     </ThemeProvider>
   );
