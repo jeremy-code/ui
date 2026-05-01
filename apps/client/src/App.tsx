@@ -6,6 +6,7 @@ import { Button } from "@ui/ui/components/Button";
 import { Checkbox } from "@ui/ui/components/Checkbox";
 import { Link } from "@ui/ui/components/Link";
 import { ListBox, ListBoxItem } from "@ui/ui/components/ListBox";
+import { NumberField } from "@ui/ui/components/NumberField";
 import { Popover, PopoverTrigger } from "@ui/ui/components/Popover";
 import { Select, SelectItem } from "@ui/ui/components/Select";
 import { Skeleton } from "@ui/ui/components/Skeleton";
@@ -49,6 +50,7 @@ const App = () => {
         </Select>
         <Input />
         <Skeleton className="h-13 w-full" />
+        <NumberField defaultValue={1024} minValue={0} label="Cents" />
       </div>
     </ThemeProvider>
   );
