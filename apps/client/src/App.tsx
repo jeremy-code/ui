@@ -10,7 +10,7 @@ import { NumberField } from "@ui/ui/components/NumberField";
 import { Popover, PopoverTrigger } from "@ui/ui/components/Popover";
 import { Select, SelectItem } from "@ui/ui/components/Select";
 import { Skeleton } from "@ui/ui/components/Skeleton";
-import { Input } from "@ui/ui/components/form/index";
+import { TextField } from "@ui/ui/components/TextField";
 
 import { ThemeToggle } from "./components/ThemeToggle";
 
@@ -48,9 +48,9 @@ const App = () => {
           <SelectItem>Panda</SelectItem>
           <SelectItem>Snake</SelectItem>
         </Select>
-        <Input />
         <Skeleton className="h-13 w-full" />
         <NumberField defaultValue={1024} minValue={0} label="Cents" />
+        <TextField label="Poem" />
       </div>
     </ThemeProvider>
   );
