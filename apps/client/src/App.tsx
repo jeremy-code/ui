@@ -4,14 +4,22 @@ import { ThemeProvider } from "next-themes";
 
 import { Button, buttonVariants } from "@ui/ui/components/Button";
 import { Checkbox } from "@ui/ui/components/Checkbox";
+import {
+  Dialog,
+  DialogCloseButton,
+  DialogTitle,
+  DialogTrigger,
+} from "@ui/ui/components/Dialog";
 import { Link } from "@ui/ui/components/Link";
 import { ListBox, ListBoxItem } from "@ui/ui/components/ListBox";
+import { Modal } from "@ui/ui/components/Modal";
 import { NumberField } from "@ui/ui/components/NumberField";
 import { Popover, PopoverTrigger } from "@ui/ui/components/Popover";
 import { Select, SelectItem } from "@ui/ui/components/Select";
 import { Skeleton } from "@ui/ui/components/Skeleton";
 import { TextField } from "@ui/ui/components/TextField";
 import { Focusable, Tooltip, TooltipTrigger } from "@ui/ui/components/Tooltip";
+import { Form } from "@ui/ui/components/form/index";
 import { Github } from "@ui/ui/components/icons/Github";
 
 import { ThemeToggle } from "./components/ThemeToggle";
@@ -68,6 +76,48 @@ const App = () => {
           <Github aria-hidden />
           Github
         </Link>
+        <DialogTrigger>
+          <Button>Sign up…</Button>
+          <Modal>
+            <Dialog className="flex flex-col gap-4">
+              {(renderProps) => (
+                <>
+                  <DialogCloseButton />
+                  <DialogTitle>Subscribe to our newsletter</DialogTitle>
+                  <p className="text-sm">
+                    Enter your information to subscribe to our newsletter and
+                    receive updates about new features and announcements.
+                  </p>
+                  <Form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      renderProps.close();
+                    }}
+                  >
+                    <TextField
+                      autoFocus
+                      label="Name"
+                      placeholder="Enter your full name"
+                    />
+                    <TextField
+                      label="Email"
+                      type="email"
+                      placeholder="Enter your email"
+                    />
+                    <div className="flex gap-2 self-end">
+                      <Button slot="close" variant="ghost">
+                        Cancel
+                      </Button>
+                      <Button type="submit" variant="muted">
+                        Subscribe
+                      </Button>
+                    </div>
+                  </Form>
+                </>
+              )}
+            </Dialog>
+          </Modal>
+        </DialogTrigger>
       </div>
     </ThemeProvider>
   );
