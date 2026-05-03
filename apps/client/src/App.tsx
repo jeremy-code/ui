@@ -1,6 +1,7 @@
 import "@ui/ui/globals.css";
 
 import { ThemeProvider } from "next-themes";
+import { useListData } from "react-aria-components/useListData";
 
 import { Button, buttonVariants } from "@ui/ui/components/Button";
 import { Checkbox } from "@ui/ui/components/Checkbox";
@@ -18,6 +19,7 @@ import { Popover, PopoverTrigger } from "@ui/ui/components/Popover";
 import { Select, SelectItem } from "@ui/ui/components/Select";
 import { Skeleton } from "@ui/ui/components/Skeleton";
 import { Switch } from "@ui/ui/components/Switch";
+import { Tag, TagGroup, type TagProps } from "@ui/ui/components/TagGroup";
 import { TextField } from "@ui/ui/components/TextField";
 import { Focusable, Tooltip, TooltipTrigger } from "@ui/ui/components/Tooltip";
 import { Form } from "@ui/ui/components/form/index";
@@ -25,7 +27,16 @@ import { Github } from "@ui/ui/components/icons/Github";
 
 import { ThemeToggle } from "./components/ThemeToggle";
 
+const INITIAL_ITEMS = [
+  { id: 1, name: "News", color: "green" },
+  { id: 2, name: "Travel", color: "yellow" },
+  { id: 3, name: "Gaming", color: "blue" },
+  { id: 4, name: "Shopping", color: "gray" },
+] satisfies ({ id: number; name: string } & TagProps)[];
+
 const App = () => {
+  const list = useListData({ initialItems: INITIAL_ITEMS });
+
   return (
     <ThemeProvider>
       <div>
@@ -122,6 +133,23 @@ const App = () => {
         <div className="flex justify-center">
           <Switch>Switch</Switch>
         </div>
+        <TagGroup
+          label="Categories"
+          selectionMode="multiple"
+          items={INITIAL_ITEMS}
+        >
+          {({ name, ...item }) => <Tag {...item}>{name}</Tag>}
+        </TagGroup>
+        <TagGroup
+          label="Categories"
+          items={list.items}
+          onRemove={(keys) => list.remove(...keys)}
+          tagListProps={{
+            renderEmptyState: () => <div>No categories</div>,
+          }}
+        >
+          {({ name, ...item }) => <Tag {...item}>{name}</Tag>}
+        </TagGroup>
       </div>
     </ThemeProvider>
   );
