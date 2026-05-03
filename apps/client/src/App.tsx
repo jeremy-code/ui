@@ -22,6 +22,7 @@ import { Skeleton } from "@ui/ui/components/Skeleton";
 import { Switch } from "@ui/ui/components/Switch";
 import { Tag, TagGroup, type TagProps } from "@ui/ui/components/TagGroup";
 import { TextField } from "@ui/ui/components/TextField";
+import { ToastRegion, toastQueue } from "@ui/ui/components/Toast";
 import { Focusable, Tooltip, TooltipTrigger } from "@ui/ui/components/Tooltip";
 import { Form } from "@ui/ui/components/form/index";
 import { Github } from "@ui/ui/components/icons/Github";
@@ -139,6 +140,20 @@ const App = () => {
         >
           {({ name, ...item }) => <Tag {...item}>{name}</Tag>}
         </TagGroup>
+        <ToastRegion />
+        <Button
+          onPress={() =>
+            toastQueue.add(
+              {
+                title: "Files uploaded",
+                description: "3 files uploaded successfully.",
+              },
+              undefined,
+            )
+          }
+        >
+          Show Toast
+        </Button>
       </div>
     </ThemeProvider>
   );

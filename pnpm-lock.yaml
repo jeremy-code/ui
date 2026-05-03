@@ -173,6 +173,9 @@ importers:
       "@types/react":
         specifier: ^19.2.14
         version: 19.2.14
+      "@types/react-dom":
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.14)
       "@ui/eslint-config":
         specifier: workspace:*
         version: link:../eslint-config
