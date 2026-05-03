@@ -17,6 +17,7 @@ import { NumberField } from "@ui/ui/components/NumberField";
 import { Popover, PopoverTrigger } from "@ui/ui/components/Popover";
 import { Select, SelectItem } from "@ui/ui/components/Select";
 import { Skeleton } from "@ui/ui/components/Skeleton";
+import { Switch } from "@ui/ui/components/Switch";
 import { TextField } from "@ui/ui/components/TextField";
 import { Focusable, Tooltip, TooltipTrigger } from "@ui/ui/components/Tooltip";
 import { Form } from "@ui/ui/components/form/index";
@@ -118,6 +119,9 @@ const App = () => {
             </Dialog>
           </Modal>
         </DialogTrigger>
+        <div className="flex justify-center">
+          <Switch>Switch</Switch>
+        </div>
       </div>
     </ThemeProvider>
   );
