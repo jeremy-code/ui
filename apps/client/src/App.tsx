@@ -53,7 +53,7 @@ const App = () => {
           <Github aria-hidden />
           Github
         </Link>
-        <ThemeToggle />
+        <ThemeToggle>Toggle theme</ThemeToggle>
         <Separator className="my-2" />
         <Link color="blue" underline="hover" href="/">
           This is a link

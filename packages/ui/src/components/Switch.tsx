@@ -98,4 +98,5 @@ export {
   switchHandleVariants,
   Switch,
   type SwitchProps,
+  switchVariants,
 };
