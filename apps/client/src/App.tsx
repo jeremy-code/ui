@@ -11,12 +11,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@ui/ui/components/Dialog";
+import { Heading } from "@ui/ui/components/Heading";
 import { Link } from "@ui/ui/components/Link";
-import { ListBox, ListBoxItem } from "@ui/ui/components/ListBox";
 import { Modal } from "@ui/ui/components/Modal";
 import { NumberField } from "@ui/ui/components/NumberField";
 import { Popover, PopoverTrigger } from "@ui/ui/components/Popover";
 import { Select, SelectItem } from "@ui/ui/components/Select";
+import { Separator } from "@ui/ui/components/Separator";
 import { Skeleton } from "@ui/ui/components/Skeleton";
 import { Switch } from "@ui/ui/components/Switch";
 import { Tag, TagGroup, type TagProps } from "@ui/ui/components/TagGroup";
@@ -39,46 +40,10 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      <div>
-        App
-        <ThemeToggle />
-        <Link color="blue" underline="hover" href="/">
-          This is a link
-        </Link>
-        <Checkbox>Remember me</Checkbox>
-        <ListBox aria-label="Favorite animal" selectionMode="multiple">
-          <ListBoxItem isDisabled>Aardvark</ListBoxItem>
-          <ListBoxItem id="cat">Cat</ListBoxItem>
-          <ListBoxItem>Dog</ListBoxItem>
-          <ListBoxItem>Kangaroo</ListBoxItem>
-          <ListBoxItem>Panda</ListBoxItem>
-          <ListBoxItem>Snake</ListBoxItem>
-        </ListBox>
-        <PopoverTrigger>
-          <Button variant="surface" aria-label="Settings">
-            Settings
-          </Button>
-          <Popover className="flex flex-col gap-2 p-4" showArrow>
-            Settings
-          </Popover>
-        </PopoverTrigger>
-        <Select label="Favorite Animal">
-          <SelectItem>Aardvark</SelectItem>
-          <SelectItem>Cat</SelectItem>
-          <SelectItem>Dog</SelectItem>
-          <SelectItem>Kangaroo</SelectItem>
-          <SelectItem>Panda</SelectItem>
-          <SelectItem>Snake</SelectItem>
-        </Select>
-        <Skeleton className="h-13 w-full" />
-        <NumberField defaultValue={1024} minValue={0} label="Cents" />
-        <TextField label="Poem" />
-        <TooltipTrigger>
-          <Focusable>
-            <span role="button">Test</span>
-          </Focusable>
-          <Tooltip>Tooltip has been opened</Tooltip>
-        </TooltipTrigger>
+      <div className="container mx-auto flex flex-col items-start gap-2 p-2">
+        <Heading size="xl" fontWeight="semibold" level={1}>
+          jeremy-code/ui
+        </Heading>
         <Link
           underline={false}
           className={buttonVariants()}
@@ -88,8 +53,34 @@ const App = () => {
           <Github aria-hidden />
           Github
         </Link>
+        <ThemeToggle />
+        <Separator className="my-2" />
+        <Link color="blue" underline="hover" href="/">
+          This is a link
+        </Link>
+        <Checkbox>Checkbox</Checkbox>
+        <PopoverTrigger>
+          <Button variant="surface" aria-label="Settings">
+            Open popover
+          </Button>
+          <Popover className="flex flex-col gap-2 p-4" showArrow>
+            Popover content
+          </Popover>
+        </PopoverTrigger>
+        <Select label="Favorite Animal" items={INITIAL_ITEMS}>
+          {(item) => <SelectItem>{item.name}</SelectItem>}
+        </Select>
+        <Skeleton className="h-13 w-full" />
+        <NumberField defaultValue={1024} minValue={0} label="Number field" />
+        <TextField label="Text field" />
+        <TooltipTrigger>
+          <Focusable>
+            <span role="button">Tooltip</span>
+          </Focusable>
+          <Tooltip>Tooltip has been opened</Tooltip>
+        </TooltipTrigger>
         <DialogTrigger>
-          <Button>Sign up…</Button>
+          <Button>Dialog trigger</Button>
           <Modal>
             <Dialog className="flex flex-col gap-4">
               {(renderProps) => (
@@ -130,9 +121,7 @@ const App = () => {
             </Dialog>
           </Modal>
         </DialogTrigger>
-        <div className="flex justify-center">
-          <Switch>Switch</Switch>
-        </div>
+        <Switch>Switch</Switch>
         <TagGroup
           label="Categories"
           selectionMode="multiple"
