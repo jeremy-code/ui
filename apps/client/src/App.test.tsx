@@ -6,5 +6,5 @@ import { App } from "#App";
 test("App component should exist", async () => {
   const screen = await render(<App />);
 
-  await expect.element(screen.getByText("App")).toBeVisible();
+  await expect.element(screen.getByText("jeremy-code/ui")).toBeVisible();
 });
