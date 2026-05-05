@@ -11,9 +11,14 @@ const viteConfig = defineConfig({
     tailwindcss(),
   ],
   css: {
+    transformer: "lightningcss",
     lightningcss: {
       exclude: Features.LightDark,
     },
+  },
+  build: {
+    cssMinify: "lightningcss",
+    license: true,
   },
 });
 
