@@ -35,7 +35,7 @@ const DatePicker = <T extends DateValue>({
     >
       {label && <Label>{label}</Label>}
       <FieldGroup className="w-auto min-w-52 cursor-text disabled:cursor-default">
-        <DateInput className="h-[unset] min-w-37.5 flex-1 border-none px-3 text-sm" />
+        <DateInput className="h-[unset] min-w-37.5 flex-1 border-none px-3 text-sm outline-none" />
         <FieldButton className="mr-1 w-6 outline-offset-0">
           <CalendarIcon aria-hidden className="size-4" />
         </FieldButton>
