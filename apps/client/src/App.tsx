@@ -53,7 +53,7 @@ const App = () => {
         </Heading>
         <Link
           underline={false}
-          className={buttonVariants()}
+          className={(renderProps) => buttonVariants(renderProps)}
           href="https://github.com/jeremy-code/ui"
           target="_blank"
         >

@@ -2,11 +2,13 @@ import {
   Button as AriaButton,
   type ButtonProps as AriaButtonProps,
 } from "react-aria-components/Button";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
+import { focusRing } from "../utils/focusRing";
 
 const buttonVariants = tv({
+  extend: focusRing,
   base: [
     "relative inline-flex cursor-pointer items-center justify-center rounded align-middle font-medium transition select-none",
     "shrink-0", // If inside a flex container, don't let the button shrink
@@ -72,9 +74,8 @@ type ButtonProps = AriaButtonProps & VariantProps<typeof buttonVariants>;
 const Button = ({ className, variant, color, size, ...props }: ButtonProps) => {
   return (
     <AriaButton
-      className={composeTailwindRenderProps(
-        className,
-        buttonVariants({ variant, size, color }),
+      className={composeRenderProps(className, (className, renderProps) =>
+        buttonVariants({ variant, size, color, className, ...renderProps }),
       )}
       {...props}
     />
