@@ -19,6 +19,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@ui/ui/components/Dialog";
+import {
+  Disclosure,
+  DisclosureHeader,
+  DisclosurePanel,
+} from "@ui/ui/components/Disclosure";
+import { DisclosureGroup } from "@ui/ui/components/DisclosureGroup";
 import { Heading } from "@ui/ui/components/Heading";
 import { Link } from "@ui/ui/components/Link";
 import { Modal } from "@ui/ui/components/Modal";
@@ -170,6 +176,16 @@ const App = () => {
         </DataList>
         <DateField label="Date field" />
         <DatePicker label="datePicker" />
+        <DisclosureGroup>
+          <Disclosure>
+            <DisclosureHeader>Personal Information</DisclosureHeader>
+            <DisclosurePanel>Personal information form here.</DisclosurePanel>
+          </Disclosure>
+          <Disclosure>
+            <DisclosureHeader>Billing Address</DisclosureHeader>
+            <DisclosurePanel>Billing address form here.</DisclosurePanel>
+          </Disclosure>
+        </DisclosureGroup>
       </div>
     </ThemeProvider>
   );
