@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 import {
   DialogTrigger as PopoverTrigger,
   type DialogTriggerProps as PopoverTriggerProps,
@@ -24,9 +22,11 @@ const popoverVariants = tv({
       bottom: "slide-in-from-top-2",
       center: null,
     },
-    state: {
-      isEntering: "animate-in ease-out fade-in-0 zoom-in-95",
-      isExiting: "animate-out ease-in fade-out-0 zoom-out-95",
+    isEntering: {
+      true: "animate-in ease-out fade-in-0 zoom-in-95",
+    },
+    isExiting: {
+      true: "animate-out ease-in fade-out-0 zoom-out-95",
     },
     size: {
       sm: "max-h-56",
@@ -38,7 +38,6 @@ const popoverVariants = tv({
 
 type PopoverProps = AriaPopoverProps & {
   showArrow?: boolean;
-  children: ReactNode;
 } & VariantProps<typeof popoverVariants>;
 
 const Popover = ({
