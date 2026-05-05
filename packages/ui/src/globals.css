@@ -2,7 +2,9 @@
 @import "tw-animate-css";
 @plugin "tailwindcss-react-aria-components";
 
-@source "src/";
+@theme {
+  --font-sans: "Lexend", sans-serif;
+}
 
 /* https://tailwindcss.com/docs/theme#referencing-other-variables */
 @theme inline {
