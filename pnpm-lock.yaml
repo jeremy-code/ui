@@ -77,12 +77,6 @@ importers:
       "@types/react-dom":
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
-      "@ui/eslint-config":
-        specifier: workspace:*
-        version: link:../../packages/eslint-config
-      "@ui/tsconfig":
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       "@vitejs/plugin-react":
         specifier: ^6.0.1
         version: 6.0.1(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.0)(rolldown@1.0.0-rc.17)(vite@8.0.10(@types/node@25.6.0)(jiti@2.6.1)(yaml@2.8.3)))(babel-plugin-react-compiler@1.0.0)(vite@8.0.10(@types/node@25.6.0)(jiti@2.6.1)(yaml@2.8.3))
@@ -176,12 +170,6 @@ importers:
       "@types/react-dom":
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
-      "@ui/eslint-config":
-        specifier: workspace:*
-        version: link:../eslint-config
-      "@ui/tsconfig":
-        specifier: workspace:*
-        version: link:../tsconfig
       tailwindcss:
         specifier: ^4.2.4
         version: 4.2.4
