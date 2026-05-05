@@ -57,6 +57,11 @@ const buttonVariants = tv({
       className: "bg-transparent hover:bg-bg-muted",
     },
     {
+      color: "accent",
+      variant: "ghost",
+      className: "bg-transparent hover:bg-accent hover:text-accent-fg",
+    },
+    {
       color: "default",
       variant: "outline",
       className: "border-border bg-transparent hover:bg-bg-muted",
