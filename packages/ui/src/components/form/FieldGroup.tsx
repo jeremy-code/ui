@@ -26,7 +26,10 @@ const fieldBorderVariants = tv({
 
 const fieldGroupVariants = tv({
   extend: focusRing,
-  base: "group box-border flex h-9 items-center overflow-hidden rounded-lg border bg-surface transition forced-colors:bg-[Field]",
+  base: [
+    "group box-border flex h-9 items-center overflow-hidden rounded-lg border bg-surface transition",
+    "forced-colors:bg-[Field]",
+  ],
   variants: fieldBorderVariants.variants,
 });
 
