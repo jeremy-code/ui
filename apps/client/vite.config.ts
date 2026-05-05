@@ -20,7 +20,7 @@ const viteConfig = defineConfig({
   },
   build: {
     cssMinify: "lightningcss",
-    license: true,
+    license: { fileName: "license.md" },
   },
 });
 
