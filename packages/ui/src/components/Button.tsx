@@ -10,7 +10,7 @@ import { focusRing } from "../utils/focusRing";
 const buttonVariants = tv({
   extend: focusRing,
   base: [
-    "relative inline-flex cursor-pointer items-center justify-center rounded align-middle font-medium transition select-none",
+    "relative inline-flex items-center justify-center rounded align-middle font-medium transition select-none",
     "shrink-0", // If inside a flex container, don't let the button shrink
     "disabled:cursor-not-allowed disabled:opacity-50",
   ],
