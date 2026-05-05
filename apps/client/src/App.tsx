@@ -1,5 +1,6 @@
 import "@ui/ui/globals.css";
 
+import { Folder, Home, Search, Settings } from "lucide-react";
 import { ThemeProvider } from "next-themes";
 import { useListData } from "react-aria-components/useListData";
 
@@ -34,6 +35,13 @@ import { Select, SelectItem } from "@ui/ui/components/Select";
 import { Separator } from "@ui/ui/components/Separator";
 import { Skeleton } from "@ui/ui/components/Skeleton";
 import { Switch } from "@ui/ui/components/Switch";
+import {
+  TabList,
+  Tabs,
+  Tab,
+  TabPanel,
+  TabPanels,
+} from "@ui/ui/components/Tabs";
 import { Tag, TagGroup, type TagProps } from "@ui/ui/components/TagGroup";
 import { TextField } from "@ui/ui/components/TextField";
 import { ToastRegion, toastQueue } from "@ui/ui/components/Toast";
@@ -186,6 +194,33 @@ const App = () => {
             <DisclosurePanel>Billing address form here.</DisclosurePanel>
           </Disclosure>
         </DisclosureGroup>
+        <Tabs>
+          <TabList aria-label="Tabs" variant="enclosed">
+            <Tab id="home">Home</Tab>
+            <Tab id="files">Files</Tab>
+            <Tab isDisabled={true} id="search">
+              Search
+            </Tab>
+            <Tab id="settings">Settings</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel id="home" className="flex items-center justify-center">
+              <Home />
+            </TabPanel>
+            <TabPanel id="files" className="flex items-center justify-center">
+              <Folder />
+            </TabPanel>
+            <TabPanel id="search" className="flex items-center justify-center">
+              <Search />
+            </TabPanel>
+            <TabPanel
+              id="settings"
+              className="flex items-center justify-center"
+            >
+              <Settings />
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </div>
     </ThemeProvider>
   );
