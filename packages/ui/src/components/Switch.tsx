@@ -3,11 +3,15 @@ import type { ComponentPropsWithRef } from "react";
 import {
   Switch as AriaSwitch,
   type SwitchProps as AriaSwitchProps,
+  type SwitchRenderProps,
 } from "react-aria-components/Switch";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv, type VariantProps } from "tailwind-variants";
 
+import { focusRing } from "../utils/focusRing";
+
 const switchTrackVariants = tv({
+  extend: focusRing,
   base: [
     "relative inline-flex cursor-pointer justify-start gap-2 rounded-full ring-1 transition-[background-color,box-shadow,opacity] ring-inset",
     "shrink-0",
@@ -19,10 +23,19 @@ const switchTrackVariants = tv({
 });
 
 type SwitchTrackProps = ComponentPropsWithRef<"div"> &
-  VariantProps<typeof switchTrackVariants>;
+  VariantProps<typeof switchTrackVariants> & {
+    renderProps?: SwitchRenderProps;
+  };
 
-const SwitchTrack = ({ className, ...props }: SwitchTrackProps) => (
-  <div className={switchTrackVariants({ className })} {...props} />
+const SwitchTrack = ({
+  className,
+  renderProps,
+  ...props
+}: SwitchTrackProps) => (
+  <div
+    className={switchTrackVariants({ className, ...renderProps })}
+    {...props}
+  />
 );
 
 const switchHandleVariants = tv({
@@ -78,9 +91,9 @@ const Switch = ({
     )}
     {...props}
   >
-    {composeRenderProps(children, (children) => (
+    {composeRenderProps(children, (children, renderProps) => (
       <>
-        <SwitchTrack {...switchTrackProps}>
+        <SwitchTrack renderProps={renderProps} {...switchTrackProps}>
           <SwitchHandle />
         </SwitchTrack>
         {children}
