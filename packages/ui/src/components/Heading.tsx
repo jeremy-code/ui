@@ -1,7 +1,7 @@
 import {
   Heading as AriaHeading,
   type HeadingProps as AriaHeadingProps,
-} from "react-aria-components";
+} from "react-aria-components/Heading";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const headingVariants = tv({

@@ -5,7 +5,7 @@ import {
   type ValidationResult as AriaValidationResult,
   Button,
   type ButtonProps as StepperButtonProps,
-} from "react-aria-components";
+} from "react-aria-components/NumberField";
 import { cn } from "tailwind-variants";
 
 import { FieldError, FieldGroup, Label, Input, Description } from "./form";

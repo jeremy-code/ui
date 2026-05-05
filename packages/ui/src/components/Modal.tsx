@@ -1,11 +1,11 @@
 import type { ComponentPropsWithRef } from "react";
 
-import { composeRenderProps } from "react-aria-components";
 import {
   ModalOverlay as AriaModalOverlay,
   type ModalOverlayProps,
   Modal as AriaModal,
 } from "react-aria-components/Modal";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv } from "tailwind-variants";
 
 const modalOverlayVariants = tv({

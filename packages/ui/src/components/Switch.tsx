@@ -1,10 +1,10 @@
 import type { ComponentPropsWithRef } from "react";
 
-import { composeRenderProps } from "react-aria-components";
 import {
   Switch as AriaSwitch,
   type SwitchProps as AriaSwitchProps,
 } from "react-aria-components/Switch";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const switchTrackVariants = tv({
