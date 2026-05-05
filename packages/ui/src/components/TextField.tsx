@@ -17,6 +17,7 @@ import { focusRing } from "../utils/focusRing";
 
 const inputStyles = tv({
   extend: focusRing,
+  base: "border transition",
   variants: {
     isFocused: fieldBorderVariants.variants.isFocusWithin,
     isInvalid: fieldBorderVariants.variants.isInvalid,
