@@ -6,6 +6,12 @@ import { useListData } from "react-aria-components/useListData";
 import { Button, buttonVariants } from "@ui/ui/components/Button";
 import { Checkbox } from "@ui/ui/components/Checkbox";
 import {
+  DataList,
+  DataListItem,
+  DataListItemLabel,
+  DataListItemValue,
+} from "@ui/ui/components/DataList";
+import {
   Dialog,
   DialogCloseButton,
   DialogTitle,
@@ -154,6 +160,14 @@ const App = () => {
         >
           Show Toast
         </Button>
+        <DataList>
+          {INITIAL_ITEMS.map((item) => (
+            <DataListItem key={item.id}>
+              <DataListItemLabel>{item.name}</DataListItemLabel>
+              <DataListItemValue>{item.color}</DataListItemValue>
+            </DataListItem>
+          ))}
+        </DataList>
       </div>
     </ThemeProvider>
   );
