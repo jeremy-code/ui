@@ -12,6 +12,7 @@ import {
   DataListItemValue,
 } from "@ui/ui/components/DataList";
 import { DateField } from "@ui/ui/components/DateField";
+import { DatePicker } from "@ui/ui/components/DatePicker";
 import {
   Dialog,
   DialogCloseButton,
@@ -168,6 +169,7 @@ const App = () => {
           ))}
         </DataList>
         <DateField label="Date field" />
+        <DatePicker label="datePicker" />
       </div>
     </ThemeProvider>
   );
