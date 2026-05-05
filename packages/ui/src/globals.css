@@ -31,5 +31,11 @@
   --color-accent-fg: var(--color-blue-50);
 }
 
+@layer base {
+  body {
+    @apply bg-bg text-fg;
+  }
+}
+
 /* https://tailwindcss.com/docs/dark-mode#using-a-data-attribute */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
