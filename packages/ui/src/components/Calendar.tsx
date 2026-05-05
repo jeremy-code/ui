@@ -1,7 +1,6 @@
 import type { ComponentPropsWithRef } from "react";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { composeRenderProps } from "react-aria-components";
 import {
   Calendar as AriaCalendar,
   CalendarGridHeader as AriaCalendarGridHeader,
@@ -15,6 +14,7 @@ import {
   type DateValue,
 } from "react-aria-components/Calendar";
 import { useLocale } from "react-aria-components/I18nProvider";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { cn, tv } from "tailwind-variants";
 
 import { Button } from "./Button";

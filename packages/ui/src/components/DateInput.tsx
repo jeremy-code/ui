@@ -1,10 +1,10 @@
-import { composeRenderProps } from "react-aria-components";
 import {
   DateInput as AriaDateInput,
   type DateInputProps as AriaDateInputProps,
   DateSegment as AriaDateSegment,
   type DateSegmentProps,
 } from "react-aria-components/DateField";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv } from "tailwind-variants";
 
 import { fieldGroupVariants } from "./form";
