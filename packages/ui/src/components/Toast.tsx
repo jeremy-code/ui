@@ -9,17 +9,18 @@ import {
   UNSTABLE_ToastContent as ToastContent,
   type ToastProps as AriaToastProps,
   Button,
+  type ButtonProps,
   Text,
 } from "react-aria-components/Toast";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
-import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 import { focusRing } from "../utils/focusRing";
 
 interface ToastInfo {
   title: string;
   description?: string;
+  toastProps?: Omit<ToastProps, "toast">;
 }
 
 const toastQueue = new ToastQueue<ToastInfo>({
@@ -48,51 +49,96 @@ type ToastRegionProps = Omit<
 const ToastRegion = ({ className, ...props }: ToastRegionProps) => {
   return (
     <AriaToastRegion
-      {...props}
       queue={toastQueue}
       className={composeRenderProps(className, (className, renderProps) =>
         toastRegionVariants({ ...renderProps, className }),
       )}
+      {...props}
     >
-      {({ toast }) => <Toast toast={toast} />}
+      {({ toast }) => <Toast toast={toast} {...toast.content.toastProps} />}
     </AriaToastRegion>
   );
 };
 
-type ToastProps = AriaToastProps<ToastInfo>;
+const closeToastButtonVariants = tv({
+  base: [
+    "flex size-8 flex-none appearance-none items-center justify-center rounded-sm border-none bg-transparent p-0 outline-none [-webkit-tap-highlight-color:transparent]",
+  ],
+  variants: {
+    isHovered: {
+      true: "bg-white/15",
+    },
+    isPressed: {
+      true: "bg-white/20",
+    },
+    isFocusVisible: {
+      true: "outline-2 outline-offset-2 outline-current outline-solid",
+    },
+  },
+});
+
+const CloseToastButton = ({ className, ...props }: ButtonProps) => {
+  return (
+    <Button
+      slot="close"
+      aria-label="Close"
+      className={composeRenderProps(className, (className, renderProps) =>
+        closeToastButtonVariants({ className, ...renderProps }),
+      )}
+      {...props}
+    >
+      <X aria-disabled className="size-4" />
+    </Button>
+  );
+};
+
+const toastRootVariants = tv({
+  extend: focusRing,
+  base: [
+    "flex w-57.5 items-center gap-4 rounded-lg px-4 py-3",
+    "[view-transition-class:toast]",
+    "forced-colors:outline",
+  ],
+  variants: {
+    color: {
+      default: "bg-bg-muted text-fg",
+      accent: "bg-accent text-accent-fg",
+      destructive: "bg-destructive text-destructive-fg",
+    },
+  },
+  defaultVariants: {
+    color: "default",
+  },
+});
+
+type ToastProps = AriaToastProps<ToastInfo> &
+  VariantProps<typeof toastRootVariants>;
 
 const Toast = ({ toast, ...props }: ToastProps) => {
   return (
     <ToastRoot toast={toast} {...props}>
       <ToastContent className="flex min-w-0 flex-1 flex-col">
-        <Text slot="title" className="text-sm font-semibold text-white">
+        <Text slot="title" className="text-sm font-semibold">
           {toast.content.title}
         </Text>
         {toast.content.description && (
-          <Text slot="description" className="text-xs text-white">
+          <Text slot="description" className="text-xs">
             {toast.content.description}
           </Text>
         )}
       </ToastContent>
-      <Button
-        slot="close"
-        aria-label="Close"
-        className="flex size-8 flex-none appearance-none items-center justify-center rounded-sm border-none bg-transparent p-0 text-white outline-none [-webkit-tap-highlight-color:transparent] hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white focus-visible:outline-solid pressed:bg-white/15"
-      >
-        <X className="size-4" />
-      </Button>
+      <CloseToastButton />
     </ToastRoot>
   );
 };
 
-const ToastRoot = ({ className, ...props }: ToastProps) => {
+const ToastRoot = ({ className, color, ...props }: ToastProps) => {
   return (
     <AriaToast
       {...props}
       style={{ viewTransitionName: props.toast.key, ...props.style }}
-      className={composeTailwindRenderProps(
-        className,
-        "flex w-57.5 items-center gap-4 rounded-lg bg-accent px-4 py-3 font-sans outline-none [view-transition-class:toast] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 focus-visible:outline-solid forced-colors:outline",
+      className={composeRenderProps(className, (className, renderProps) =>
+        toastRootVariants({ className, color, ...renderProps }),
       )}
     />
   );

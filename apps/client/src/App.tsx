@@ -150,13 +150,11 @@ const App = () => {
         <ToastRegion />
         <Button
           onPress={() =>
-            toastQueue.add(
-              {
-                title: "Files uploaded",
-                description: "3 files uploaded successfully.",
-              },
-              undefined,
-            )
+            toastQueue.add({
+              title: "Files uploaded",
+              description: "3 files uploaded successfully.",
+              toastProps: { color: "accent" },
+            })
           }
         >
           Show Toast
