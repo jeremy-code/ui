@@ -36,7 +36,7 @@ const ListBox = <T extends object>({
 
 const listBoxItemVariants = tv({
   extend: focusRing,
-  base: "group/list-box-item relative flex items-center gap-2 rounded-md px-2.5 py-1.5 text-sm transition-[background-color,border-radius,opacity,color] forced-color-adjust-none select-none",
+  base: "group/list-box-item relative flex items-center gap-2 rounded-sm px-2.5 py-1.5 text-sm transition-[background-color,border-radius,opacity,color] forced-color-adjust-none select-none",
   variants: {
     isSelected: {
       false:
