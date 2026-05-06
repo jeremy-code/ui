@@ -93,7 +93,7 @@ const Select = <
       <Popover containerPadding={0}>
         <ListBox
           items={items}
-          className="max-h-[inherit] overflow-auto p-1 outline-hidden [clip-path:inset(0_0_0_0_round_.75rem)]"
+          className="max-h-[inherit] overflow-auto p-1 outline-hidden"
         >
           {children}
         </ListBox>

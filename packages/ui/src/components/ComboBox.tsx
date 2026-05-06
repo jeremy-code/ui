@@ -75,7 +75,7 @@ const ComboBox = <T extends object, M extends SelectionMode = "single">({
           {...listBoxProps}
           className={composeTailwindRenderProps(
             listBoxProps?.className,
-            "max-h-[inherit] overflow-auto p-1 outline-0 [clip-path:inset(0_0_0_0_round_.75rem)]",
+            "max-h-[inherit] overflow-auto p-1 outline-none",
           )}
         >
           {children}
