@@ -49,7 +49,6 @@ import { ToastRegion, toastQueue } from "@ui/ui/components/Toast";
 import { Focusable, Tooltip, TooltipTrigger } from "@ui/ui/components/Tooltip";
 import { Form } from "@ui/ui/components/form/index";
 import { Github } from "@ui/ui/components/icons/Github";
-import { focusRing } from "@ui/ui/utils/focusRing";
 
 import { ThemeToggle } from "./components/ThemeToggle";
 
@@ -74,8 +73,6 @@ const App = () => {
   return (
     <ThemeProvider>
       <div className="container mx-auto flex flex-col items-start gap-2 p-2">
-        <button className={focusRing()}>span</button>
-
         <Heading size="xl" fontWeight="semibold" level={1}>
           jeremy-code/ui
         </Heading>
