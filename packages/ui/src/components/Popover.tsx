@@ -12,7 +12,7 @@ import { OverlayArrow } from "./OverlayArrow";
 const popoverVariants = tv({
   base: [
     "min-w-(--trigger-width) origin-(--trigger-anchor-point)",
-    "overflow-auto rounded-md border border-border bg-surface text-fg shadow-md outline-none",
+    "rounded-md border border-border bg-surface text-fg shadow-md outline-none",
   ],
   variants: {
     placement: {
