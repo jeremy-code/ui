@@ -27,7 +27,7 @@ const calendarCellVariants = tv({
   base: "flex aspect-square w-[calc(100cqw/7)] cursor-default items-center justify-center rounded-full text-sm forced-color-adjust-none [-webkit-tap-highlight-color:transparent]",
   variants: {
     isToday: {
-      true: "after:absolute after:-bottom-3.25 after:size-1 after:rounded-full after:bg-current",
+      true: "relative after:absolute after:bottom-1 after:size-1 after:rounded-full after:bg-current",
     },
     isSelected: {
       false: [
