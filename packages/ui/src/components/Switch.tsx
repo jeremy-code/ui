@@ -17,7 +17,7 @@ const switchTrackVariants = tv({
     "shrink-0",
     "disabled:cursor-not-allowed disabled:opacity-50",
     "h-(--switch-height) w-(--switch-width)",
-    "group-not-selected/switch:bg-bg-muted group-not-selected/switch:ring-border hover:group-not-selected/switch:ring-fg-subtle/80",
+    "group-not-selected/switch:bg-bg-muted group-not-selected/switch:ring-border group-hover/switch:group-not-selected/switch:ring-fg-subtle group-pressed/switch:group-not-selected/switch:ring-neutral",
     "group-selected/switch:bg-accent group-selected/switch:ring-accent",
   ],
 });
