@@ -6,6 +6,7 @@ import { useListData } from "react-aria-components/useListData";
 
 import { Button, buttonVariants } from "@ui/ui/components/Button";
 import { Checkbox } from "@ui/ui/components/Checkbox";
+import { ComboBox, ComboBoxItem } from "@ui/ui/components/ComboBox";
 import {
   DataList,
   DataListItem,
@@ -48,6 +49,7 @@ import { ToastRegion, toastQueue } from "@ui/ui/components/Toast";
 import { Focusable, Tooltip, TooltipTrigger } from "@ui/ui/components/Tooltip";
 import { Form } from "@ui/ui/components/form/index";
 import { Github } from "@ui/ui/components/icons/Github";
+import { focusRing } from "@ui/ui/utils/focusRing";
 
 import { ThemeToggle } from "./components/ThemeToggle";
 
@@ -58,12 +60,22 @@ const INITIAL_ITEMS = [
   { id: 4, name: "Shopping", color: "gray" },
 ] satisfies ({ id: number; name: string } & TagProps)[];
 
+const LONG_INITIAL_ITEMS = [
+  ...INITIAL_ITEMS,
+  ...INITIAL_ITEMS,
+  ...INITIAL_ITEMS,
+  ...INITIAL_ITEMS,
+  ...INITIAL_ITEMS,
+].map((item, index) => ({ ...item, id: index }));
+
 const App = () => {
   const list = useListData({ initialItems: INITIAL_ITEMS });
 
   return (
     <ThemeProvider>
       <div className="container mx-auto flex flex-col items-start gap-2 p-2">
+        <button className={focusRing()}>span</button>
+
         <Heading size="xl" fontWeight="semibold" level={1}>
           jeremy-code/ui
         </Heading>
@@ -96,6 +108,9 @@ const App = () => {
         <Skeleton className="h-13 w-full" />
         <NumberField defaultValue={1024} minValue={0} label="Number field" />
         <TextField label="Text field" />
+        <ComboBox label="Favorite animal" items={INITIAL_ITEMS}>
+          {(item) => <ComboBoxItem>{item.name}</ComboBoxItem>}
+        </ComboBox>
         <TooltipTrigger>
           <Focusable>
             <span role="button">Tooltip</span>
@@ -120,6 +135,13 @@ const App = () => {
                       renderProps.close();
                     }}
                   >
+                    <ComboBox
+                      popoverProps={{ className: "max-h-[100px]" }}
+                      label="Favorite animal"
+                      items={LONG_INITIAL_ITEMS}
+                    >
+                      {(item) => <ComboBoxItem>{item.name}</ComboBoxItem>}
+                    </ComboBox>
                     <TextField
                       autoFocus
                       label="Name"
@@ -139,6 +161,16 @@ const App = () => {
                       </Button>
                     </div>
                   </Form>
+                  <Disclosure>
+                    <DisclosureHeader>Test scrolling</DisclosureHeader>
+                    <DisclosurePanel>
+                      <ul className="flex list-disc flex-col gap-2">
+                        {LONG_INITIAL_ITEMS.map((item) => (
+                          <li key={item.id}>{item.name}</li>
+                        ))}
+                      </ul>
+                    </DisclosurePanel>
+                  </Disclosure>
                 </>
               )}
             </Dialog>
