@@ -27,8 +27,8 @@
 
   --color-accent: var(--color-blue-600);
   --color-accent-hover: light-dark(
-    var(--color-gray-700),
-    var(--color-gray-500)
+    var(--color-blue-700),
+    var(--color-blue-500)
   );
   --color-accent-fg: var(--color-blue-50);
 }

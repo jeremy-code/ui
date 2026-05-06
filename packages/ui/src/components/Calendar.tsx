@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef } from "react";
+import { type ComponentPropsWithRef } from "react";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
@@ -26,13 +26,16 @@ const calendarCellVariants = tv({
   extend: focusRing,
   base: "flex aspect-square w-[calc(100cqw/7)] cursor-default items-center justify-center rounded-full text-sm forced-color-adjust-none [-webkit-tap-highlight-color:transparent]",
   variants: {
+    isToday: {
+      true: "after:absolute after:-bottom-3.25 after:size-1 after:rounded-full after:bg-current",
+    },
     isSelected: {
       false: [
         "text-gray-900 hover:bg-gray-200 pressed:bg-gray-300",
         "dark:text-gray-200 dark:hover:bg-gray-700 dark:pressed:bg-gray-600",
       ],
       true: [
-        "bg-accent text-accent-fg invalid:bg-destructive",
+        "bg-accent text-accent-fg invalid:bg-destructive hover:bg-accent-hover",
         "forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-colors:invalid:bg-[Mark]",
       ],
     },
@@ -49,7 +52,10 @@ const CalendarCell = ({ className, ...props }: CalendarCellProps) => (
   <AriaCalendarCell
     {...props}
     className={composeRenderProps(className, (className, renderProps) =>
-      calendarCellVariants({ className, ...renderProps }),
+      calendarCellVariants({
+        className,
+        ...renderProps,
+      }),
     )}
   />
 );
@@ -68,13 +74,12 @@ const Calendar = <T extends DateValue>({
   return (
     <AriaCalendar
       {...props}
-      className={composeTailwindRenderProps(
-        props.className,
-        "@container flex w-[calc(9*var(--spacing)*7)] max-w-full flex-col",
-      )}
+      className={composeTailwindRenderProps(props.className, [
+        "@container flex w-[calc(--spacing(9)*7)] max-w-full flex-col",
+      ])}
     >
       <CalendarHeader />
-      <CalendarGrid className="border-spacing-0">
+      <CalendarGrid>
         <CalendarGridHeader />
         <CalendarGridBody>
           {(date) => <CalendarCell date={date} />}
