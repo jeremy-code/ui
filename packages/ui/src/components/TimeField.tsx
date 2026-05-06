@@ -9,11 +9,11 @@ import { DateInput } from "./DateInput";
 import { Description, FieldError, Label } from "./form";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 
-interface TimeFieldProps<T extends TimeValue> extends AriaTimeFieldProps<T> {
+type TimeFieldProps<T extends TimeValue> = {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
-}
+} & AriaTimeFieldProps<T>;
 
 const TimeField = <T extends TimeValue>({
   className,

@@ -17,11 +17,11 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 import { focusRing } from "../utils/focusRing";
 
-interface ToastInfo {
+type ToastInfo = {
   title: string;
   description?: string;
   toastProps?: Omit<ToastProps, "toast">;
-}
+};
 
 const toastQueue = new ToastQueue<ToastInfo>({
   wrapUpdate(fn) {
