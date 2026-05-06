@@ -41,21 +41,20 @@ const selectVariants = tv({
   },
 });
 
-interface SelectProps<
-  T extends object,
-  M extends "single" | "multiple",
-> extends Omit<AriaSelectProps<T, M>, "children"> {
+type SelectionMode = "single" | "multiple";
+
+type SelectProps<T extends object, M extends SelectionMode> = {
   children: ListBoxProps<T>["children"];
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   items?: Iterable<T>;
-}
+} & Omit<AriaSelectProps<T, M>, "children">;
 
 const Select = <
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type -- Match `AriaSelectProps` type
   T extends object = {},
-  M extends "single" | "multiple" = "single",
+  M extends SelectionMode = "single",
 >({
   className,
   children,
