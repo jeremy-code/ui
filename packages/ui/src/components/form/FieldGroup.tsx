@@ -19,7 +19,7 @@ const fieldBorderVariants = tv({
       true: "border-destructive dark:border-destructive forced-colors:border-[Mark]",
     },
     isDisabled: {
-      true: "border-bg-muted forced-colors:border-[GrayText]",
+      true: "border-bg-muted hover:border-bg-muted forced-colors:border-[GrayText]",
     },
   },
 });

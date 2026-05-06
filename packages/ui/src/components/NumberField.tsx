@@ -16,7 +16,7 @@ const StepperButton = ({ className, ...props }: StepperButtonProps) => {
   return (
     <Button
       className={cn(
-        "flex flex-1 border-0 bg-transparent px-0.5 py-0 text-fg-subtle [-webkit-tap-highlight-color:transparent] group-disabled:text-border pressed:bg-bg-muted",
+        "flex flex-1 border-0 bg-transparent px-0.5 py-0 text-fg-subtle transition-[background-color,color] [-webkit-tap-highlight-color:transparent] group-disabled:text-border pressed:bg-bg-muted",
         className,
       )}
       {...props}

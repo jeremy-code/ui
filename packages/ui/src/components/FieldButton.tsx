@@ -1,16 +1,16 @@
 import {
   Button as AriaButton,
-  type ButtonProps,
+  type ButtonProps as FieldButtonProps,
 } from "react-aria-components/Button";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv } from "tailwind-variants";
 
 import { focusRing } from "../utils/focusRing";
 
-const button = tv({
+const fieldButtonVariants = tv({
   extend: focusRing,
   base: [
-    "relative inline-flex cursor-default items-center justify-center rounded-md bg-transparent p-1 text-center text-sm text-fg-muted transition [-webkit-tap-highlight-color:transparent]",
+    "relative inline-flex cursor-default items-center justify-center rounded-sm bg-transparent p-1 text-center text-sm text-fg-muted transition [-webkit-tap-highlight-color:transparent]",
   ],
   variants: {
     isHovered: {
@@ -29,15 +29,15 @@ const button = tv({
   },
 });
 
-function FieldButton(props: ButtonProps) {
+const FieldButton = (props: FieldButtonProps) => {
   return (
     <AriaButton
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
-        button({ ...renderProps, className }),
+        fieldButtonVariants({ ...renderProps, className }),
       )}
     />
   );
-}
+};
 
-export { FieldButton };
+export { FieldButton, type FieldButtonProps };
