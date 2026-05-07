@@ -3,17 +3,16 @@ import {
   FieldError,
   Label,
   type CheckboxGroupProps as AriaCheckboxGroupProps,
-  type ValidationResult,
 } from "react-aria-components/CheckboxGroup";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 
-import { Description } from "./form";
+import { Description, type FieldErrorMessage } from "./form";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 
 type CheckboxGroupProps = {
   label?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: FieldErrorMessage;
 } & AriaCheckboxGroupProps;
 
 const CheckboxGroup = ({

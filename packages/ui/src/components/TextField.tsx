@@ -1,7 +1,6 @@
 import {
   TextField as AriaTextField,
   type TextFieldProps as AriaTextFieldProps,
-  type ValidationResult,
 } from "react-aria-components/TextField";
 import { tv } from "tailwind-variants";
 
@@ -11,6 +10,7 @@ import {
   Input,
   Label,
   fieldBorderVariants,
+  type FieldErrorMessage,
 } from "./form";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 import { focusRing } from "../utils/focusRing";
@@ -29,7 +29,7 @@ type TextFieldProps = AriaTextFieldProps & {
   label?: string;
   placeholder?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: FieldErrorMessage;
 };
 
 const TextField = ({

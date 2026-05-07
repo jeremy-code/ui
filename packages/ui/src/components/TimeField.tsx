@@ -2,17 +2,16 @@ import {
   TimeField as AriaTimeField,
   type TimeFieldProps as AriaTimeFieldProps,
   type TimeValue,
-  type ValidationResult,
 } from "react-aria-components/TimeField";
 
 import { DateInput } from "./DateInput";
-import { Description, FieldError, Label } from "./form";
+import { Description, FieldError, Label, type FieldErrorMessage } from "./form";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 
 type TimeFieldProps<T extends TimeValue> = {
   label?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: FieldErrorMessage;
 } & AriaTimeFieldProps<T>;
 
 const TimeField = <T extends TimeValue>({

@@ -2,13 +2,19 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import {
   NumberField as AriaNumberField,
   type NumberFieldProps as AriaNumberFieldProps,
-  type ValidationResult as AriaValidationResult,
   Button,
   type ButtonProps as StepperButtonProps,
 } from "react-aria-components/NumberField";
 import { cn } from "tailwind-variants";
 
-import { FieldError, FieldGroup, Label, Input, Description } from "./form";
+import {
+  FieldError,
+  FieldGroup,
+  Label,
+  Input,
+  Description,
+  type FieldErrorMessage,
+} from "./form";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 import { fieldBorderVariants } from "./form/FieldGroup";
 
@@ -24,12 +30,12 @@ const StepperButton = ({ className, ...props }: StepperButtonProps) => {
   );
 };
 
-type NumberFieldProps = Omit<AriaNumberFieldProps, "children"> & {
+type NumberFieldProps = {
   label?: string;
   placeholder?: string;
   description?: string;
-  errorMessage?: string | ((validation: AriaValidationResult) => string);
-};
+  errorMessage?: FieldErrorMessage;
+} & Omit<AriaNumberFieldProps, "children">;
 
 const NumberField = ({
   className,

@@ -3,20 +3,25 @@ import {
   DatePicker as AriaDatePicker,
   type DatePickerProps as AriaDatePickerProps,
   type DateValue,
-  type ValidationResult,
 } from "react-aria-components/DatePicker";
 
 import { Calendar } from "./Calendar";
 import { DateInput } from "./DateInput";
 import { FieldButton } from "./FieldButton";
 import { Popover } from "./Popover";
-import { Description, FieldError, FieldGroup, Label } from "./form";
+import {
+  Description,
+  FieldError,
+  FieldGroup,
+  Label,
+  type FieldErrorMessage,
+} from "./form";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 
 type DatePickerProps<T extends DateValue> = {
   label?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: FieldErrorMessage;
 } & AriaDatePickerProps<T>;
 
 const DatePicker = <T extends DateValue>({

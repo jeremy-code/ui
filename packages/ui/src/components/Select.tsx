@@ -7,7 +7,6 @@ import {
   type ListBoxProps,
   type ListBoxItemProps as SelectItemProps,
   SelectValue,
-  type ValidationResult,
 } from "react-aria-components/Select";
 import { cn, tv } from "tailwind-variants";
 
@@ -17,7 +16,7 @@ import {
   type ListBoxSectionProps as SelectSectionProps,
 } from "./ListBox";
 import { Popover } from "./Popover";
-import { Description, FieldError, Label } from "./form";
+import { Description, FieldError, Label, type FieldErrorMessage } from "./form";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 import { focusRing } from "../utils/focusRing";
 
@@ -47,7 +46,7 @@ type SelectProps<T extends object, M extends SelectionMode> = {
   children: ListBoxProps<T>["children"];
   label?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: FieldErrorMessage;
   items?: Iterable<T>;
 } & Omit<AriaSelectProps<T, M>, "children">;
 

@@ -2,17 +2,16 @@ import {
   DateField as AriaDateField,
   type DateFieldProps as AriaDateFieldProps,
   type DateValue,
-  type ValidationResult,
 } from "react-aria-components/DateField";
 
 import { DateInput } from "./DateInput";
-import { Description, FieldError, Label } from "./form";
+import { Description, FieldError, Label, type FieldErrorMessage } from "./form";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 
 type DateFieldProps<T extends DateValue> = {
   label?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: FieldErrorMessage;
 } & AriaDateFieldProps<T>;
 
 const DateField = <T extends DateValue>({

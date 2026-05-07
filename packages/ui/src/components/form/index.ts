@@ -1,6 +1,10 @@
 export { Description, type DescriptionProps } from "./Description";
 export { ErrorMessage, type ErrorMessageProps } from "./ErrorMessage";
-export { FieldError, type FieldErrorProps } from "./FieldError";
+export {
+  FieldError,
+  type FieldErrorProps,
+  type FieldErrorMessage,
+} from "./FieldError";
 export {
   FieldGroup,
   type FieldGroupProps,
