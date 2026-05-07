@@ -25,7 +25,7 @@ const inputVariants = tv({
       lg: "h-11 min-w-11 px-4 text-base/6",
     },
     isDisabled: {
-      true: "bg-muted cursor-not-allowed opacity-80",
+      true: "cursor-not-allowed bg-bg-muted opacity-80",
     },
     isInvalid: {
       true: "border-destructive",
