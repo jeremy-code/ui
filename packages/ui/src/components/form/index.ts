@@ -14,3 +14,4 @@ export {
 export { Form, type FormProps, formVariants } from "./Form";
 export { Input, type InputProps, inputVariants } from "./Input";
 export { Label, type LabelProps, labelVariants } from "./Label";
+export { TextArea, type TextAreaProps, textAreaVariants } from "./TextArea";

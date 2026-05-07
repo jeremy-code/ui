@@ -44,6 +44,7 @@ import {
   TabPanels,
 } from "@ui/ui/components/Tabs";
 import { Tag, TagGroup, type TagProps } from "@ui/ui/components/TagGroup";
+import { TextAreaField } from "@ui/ui/components/TextAreaField";
 import { TextField } from "@ui/ui/components/TextField";
 import { ToastRegion, toastQueue } from "@ui/ui/components/Toast";
 import { Focusable, Tooltip, TooltipTrigger } from "@ui/ui/components/Tooltip";
@@ -213,6 +214,7 @@ const App = () => {
         </DataList>
         <DateField label="Date field" />
         <DatePicker label="datePicker" />
+        <TextAreaField label="TextArea field" />
         <DisclosureGroup>
           <Disclosure>
             <DisclosureHeader>Personal Information</DisclosureHeader>
