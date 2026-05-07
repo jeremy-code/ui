@@ -4,6 +4,12 @@ import { Folder, Home, Search, Settings } from "lucide-react";
 import { ThemeProvider } from "next-themes";
 import { useListData } from "react-aria-components/useListData";
 
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+} from "@ui/ui/components/Accordion";
 import { Button, buttonVariants } from "@ui/ui/components/Button";
 import { Checkbox } from "@ui/ui/components/Checkbox";
 import { ComboBox, ComboBoxItem } from "@ui/ui/components/ComboBox";
@@ -215,6 +221,16 @@ const App = () => {
         <DateField label="Date field" />
         <DatePicker label="datePicker" />
         <TextAreaField label="TextArea field" />
+        <Accordion variant="enclosed">
+          <AccordionItem>
+            <AccordionHeader>Personal Information</AccordionHeader>
+            <AccordionPanel>Personal information form here.</AccordionPanel>
+          </AccordionItem>
+          <AccordionItem>
+            <AccordionHeader>Billing Address</AccordionHeader>
+            <AccordionPanel>Billing address form here.</AccordionPanel>
+          </AccordionItem>
+        </Accordion>
         <DisclosureGroup>
           <Disclosure>
             <DisclosureHeader>Personal Information</DisclosureHeader>
