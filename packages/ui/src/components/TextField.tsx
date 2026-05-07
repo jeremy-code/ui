@@ -15,7 +15,7 @@ import {
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 import { focusRing } from "../utils/focusRing";
 
-const inputStyles = tv({
+const inputVariants = tv({
   extend: focusRing,
   base: "border transition",
   variants: {
@@ -27,8 +27,8 @@ const inputStyles = tv({
 
 type TextFieldProps = AriaTextFieldProps & {
   label?: string;
-  description?: string;
   placeholder?: string;
+  description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
 };
 
@@ -41,15 +41,15 @@ const TextField = ({
 }: TextFieldProps) => {
   return (
     <AriaTextField
-      {...props}
       className={composeTailwindRenderProps(className, "flex flex-col gap-1")}
+      {...props}
     >
       {label && <Label>{label}</Label>}
-      <Input className={inputStyles} />
+      <Input className={inputVariants} />
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>
   );
 };
 
-export { TextField, type TextFieldProps, inputStyles };
+export { TextField, type TextFieldProps, inputVariants };

@@ -9,4 +9,4 @@ export {
 } from "./FieldGroup";
 export { Form, type FormProps, formVariants } from "./Form";
 export { Input, type InputProps, inputVariants } from "./Input";
-export { Label, type LabelProps } from "./Label";
+export { Label, type LabelProps, labelVariants } from "./Label";
