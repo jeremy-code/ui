@@ -73,7 +73,7 @@ const Select = <
     >
       {label && <Label>{label}</Label>}
       <Button className={selectVariants}>
-        <SelectValue className="basis-content line-clamp-1 shrink-0 text-sm">
+        <SelectValue className="basis-content line-clamp-1 shrink-0 text-sm data-[placeholder=true]:text-neutral">
           {({ selectedText, defaultChildren }) =>
             selectedText || defaultChildren
           }

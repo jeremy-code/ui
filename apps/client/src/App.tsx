@@ -110,9 +110,18 @@ const App = () => {
           {(item) => <SelectItem>{item.name}</SelectItem>}
         </Select>
         <Skeleton className="h-13 w-full" />
-        <NumberField defaultValue={1024} minValue={0} label="Number field" />
-        <TextField label="Text field" />
-        <ComboBox label="Favorite animal" items={INITIAL_ITEMS}>
+        <NumberField
+          placeholder="32"
+          defaultValue={1024}
+          minValue={0}
+          label="Number field"
+        />
+        <TextField placeholder="Steve Jobs" label="Text field" />
+        <ComboBox
+          label="Favorite animal"
+          placeholder="Shopping"
+          items={INITIAL_ITEMS}
+        >
           {(item) => <ComboBoxItem>{item.name}</ComboBoxItem>}
         </ComboBox>
         <TooltipTrigger>
@@ -220,7 +229,7 @@ const App = () => {
         </DataList>
         <DateField label="Date field" />
         <DatePicker label="datePicker" />
-        <TextAreaField label="TextArea field" />
+        <TextAreaField label="TextArea field" placeholder="Placeholder" />
         <Accordion variant="enclosed">
           <AccordionItem>
             <AccordionHeader>Personal Information</AccordionHeader>

@@ -6,7 +6,10 @@ import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const textAreaVariants = tv({
-  base: ["relative w-full min-w-0 appearance-none rounded-md text-start"],
+  base: [
+    "relative w-full min-w-0 appearance-none rounded-md text-start",
+    "placeholder:text-neutral",
+  ],
   variants: {
     size: {
       xs: "scroll-pb-1.5 px-2 py-1.5 text-xs",
