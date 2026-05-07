@@ -1,9 +1,11 @@
+import type { ComponentPropsWithRef } from "react";
+
 import {
   TooltipTrigger,
   type TooltipTriggerComponentProps as TooltipTriggerProps,
   Tooltip as AriaTooltip,
   type TooltipProps,
-  Focusable,
+  Focusable as TooltipTarget,
 } from "react-aria-components/Tooltip";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv } from "tailwind-variants";
@@ -56,11 +58,14 @@ const Tooltip = ({ children, offset = 10, ...props }: TooltipProps) => {
   );
 };
 
+type TooltipTargetProps = ComponentPropsWithRef<typeof TooltipTarget>;
+
 export {
   TooltipTrigger,
   type TooltipTriggerProps,
   Tooltip,
   type TooltipProps,
   tooltipVariants,
-  Focusable,
+  TooltipTarget,
+  type TooltipTargetProps,
 };
