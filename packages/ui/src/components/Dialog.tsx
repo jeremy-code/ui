@@ -1,3 +1,5 @@
+import type { ComponentPropsWithRef } from "react";
+
 import { X } from "lucide-react";
 import {
   DialogTrigger,
@@ -46,6 +48,57 @@ const DialogCloseButton = ({ className, ...props }: DialogCloseButtonProps) => {
   );
 };
 
+type DialogHeaderProps = ComponentPropsWithRef<"div">;
+
+const DialogHeader = ({ className, ...props }: DialogHeaderProps) => {
+  return (
+    <div
+      className={cn("flex flex-0 flex-col gap-2 px-6 pt-6 pb-4", className)}
+      {...props}
+    />
+  );
+};
+
+type DialogBodyProps = ComponentPropsWithRef<"div">;
+
+const DialogBody = ({ className, ...props }: DialogBodyProps) => {
+  return <div className={cn("flex-1 px-6 pt-2 pb-6", className)} {...props} />;
+};
+
+type DialogFooterProps = {
+  closeButton?: boolean;
+} & ComponentPropsWithRef<"div">;
+
+const DialogFooter = ({
+  className,
+  closeButton = false,
+  children,
+  ...props
+}: DialogFooterProps) => {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-end gap-3 px-6 pt-2 pb-4",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      {closeButton && (
+        <Button slot="close" variant="outline">
+          Close
+        </Button>
+      )}
+    </div>
+  );
+};
+
+type DialogDescriptionProps = ComponentPropsWithRef<"div">;
+
+const DialogDescription = ({ className, ...props }: DialogDescriptionProps) => {
+  return <div className={cn("text-sm text-fg-muted", className)} {...props} />;
+};
+
 export {
   DialogTrigger,
   type DialogTriggerProps,
@@ -56,4 +109,12 @@ export {
   type DialogTitleProps,
   DialogCloseButton,
   type DialogCloseButtonProps,
+  DialogHeader,
+  type DialogHeaderProps,
+  DialogBody,
+  type DialogBodyProps,
+  DialogFooter,
+  type DialogFooterProps,
+  DialogDescription,
+  type DialogDescriptionProps,
 };
