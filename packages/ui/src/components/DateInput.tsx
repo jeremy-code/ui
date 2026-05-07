@@ -45,7 +45,7 @@ const dateInputVariants = tv({
   extend: fieldGroupVariants,
   base: [
     "inline h-9 min-w-37.5 cursor-text overflow-x-auto px-3 text-sm/8.5 whitespace-nowrap [scrollbar-width:none]",
-    "placeholder:text-neutral",
+    "placeholder:text-fg-muted",
   ],
   variants: {
     isInvalid: {

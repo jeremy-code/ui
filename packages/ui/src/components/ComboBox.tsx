@@ -67,7 +67,7 @@ const ComboBox = <T extends object, M extends SelectionMode = "single">({
       {props.selectionMode === "multiple" && (
         <ComboBoxValue
           placeholder="No items selected"
-          className="text-xs text-neutral-600 dark:text-neutral-300"
+          className="text-xs text-fg-muted"
         />
       )}
       {description && <Description>{description}</Description>}

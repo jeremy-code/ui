@@ -8,7 +8,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 const textAreaVariants = tv({
   base: [
     "relative w-full min-w-0 appearance-none rounded-md text-start",
-    "placeholder:text-neutral",
+    "placeholder:text-fg-muted",
   ],
   variants: {
     size: {
