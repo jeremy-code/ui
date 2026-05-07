@@ -11,7 +11,7 @@ import { fieldGroupVariants } from "./form";
 
 const dateSegmentVariants = tv({
   base: [
-    "inline rounded-xs p-0.5 whitespace-nowrap text-fg-bolder caret-transparent outline-0 forced-color-adjust-none [-webkit-tap-highlight-color:transparent]",
+    "inline rounded-sm p-0.5 whitespace-nowrap text-fg-bolder caret-transparent outline-0 forced-color-adjust-none [-webkit-tap-highlight-color:transparent]",
     "forced-colors:text-[ButtonText] type-literal:p-0",
   ],
   variants: {
@@ -44,7 +44,7 @@ const DateSegment = ({ className, ...props }: DateSegmentProps) => {
 const dateInputVariants = tv({
   extend: fieldGroupVariants,
   base: [
-    "inline h-9 min-w-37.5 cursor-text overflow-x-auto px-3 text-sm/8.5 whitespace-nowrap [scrollbar-width:none]",
+    "inline h-9 min-w-37.5 cursor-text overflow-visible px-3 text-sm/8.5 whitespace-nowrap [scrollbar-width:none]",
     "placeholder:text-fg-muted",
   ],
   variants: {
