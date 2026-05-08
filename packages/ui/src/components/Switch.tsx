@@ -56,11 +56,11 @@ const SwitchHandle = ({ className, ...props }: SwitchHandleProps) => (
 
 const switchVariants = tv({
   base: [
-    "group/switch relative flex items-center gap-2 text-sm text-neutral-800 transition [-webkit-tap-highlight-color:transparent] dark:text-neutral-200",
+    "group/switch relative flex items-center gap-2 text-sm text-gray-800 transition [-webkit-tap-highlight-color:transparent] dark:text-gray-200",
   ],
   variants: {
     isDisabled: {
-      true: "disabled:text-neutral-300 dark:disabled:text-neutral-600 forced-colors:disabled:text-[GrayText]",
+      true: "disabled:text-gray-300 dark:disabled:text-gray-600 forced-colors:disabled:text-[GrayText]",
     },
 
     size: {

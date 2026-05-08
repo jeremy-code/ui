@@ -21,8 +21,8 @@ const fieldButtonVariants = tv({
     },
     isDisabled: {
       true: [
-        "bg-neutral-100 text-neutral-300",
-        "dark:bg-neutral-800 dark:text-neutral-600",
+        "bg-gray-100 text-gray-300",
+        "dark:bg-gray-800 dark:text-gray-600",
         "forced-colors:text-[GrayText]",
       ],
     },

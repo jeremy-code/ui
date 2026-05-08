@@ -132,7 +132,7 @@ const CalendarGridHeader = (props: CalendarGridHeaderProps) => {
   return (
     <AriaCalendarGridHeader {...props}>
       {(day) => (
-        <CalendarHeaderCell className="text-xs font-semibold text-neutral-500">
+        <CalendarHeaderCell className="text-xs font-semibold text-gray-500">
           {day}
         </CalendarHeaderCell>
       )}

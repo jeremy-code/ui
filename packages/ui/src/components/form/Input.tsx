@@ -21,8 +21,8 @@ const inputVariants = tv({
     isDisabled: {
       true: [
         "cursor-not-allowed",
-        "text-neutral-200 placeholder:text-neutral-200",
-        "dark:text-neutral-600 dark:placeholder:text-neutral-600",
+        "text-gray-200 placeholder:text-gray-200",
+        "dark:text-gray-600 dark:placeholder:text-gray-600",
       ],
     },
   },

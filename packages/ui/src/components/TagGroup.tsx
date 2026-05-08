@@ -57,8 +57,8 @@ const tagVariants = tv({
     },
     isDisabled: {
       true: [
-        "border-gray-200 bg-neutral-100 text-neutral-300",
-        "dark:border-gray-700 dark:bg-transparent dark:text-neutral-600",
+        "border-gray-200 bg-gray-100 text-gray-300",
+        "dark:border-gray-700 dark:bg-transparent dark:text-gray-600",
         "forced-colors:text-[GrayText]",
       ],
     },
