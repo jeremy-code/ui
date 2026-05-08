@@ -26,7 +26,7 @@ const TimeField = <T extends TimeValue>({
       {...props}
       className={composeTailwindRenderProps(className, "flex flex-col gap-1")}
     >
-      <Label>{label}</Label>
+      {label && <Label>{label}</Label>}
       <DateInput />
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>

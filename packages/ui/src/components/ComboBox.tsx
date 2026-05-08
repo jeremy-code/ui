@@ -57,7 +57,7 @@ const ComboBox = <T extends object, M extends SelectionMode = "single">({
         "flex flex-col gap-1",
       )}
     >
-      <Label>{label}</Label>
+      {label && <Label>{label}</Label>}
       <FieldGroup>
         <Input className="ps-3 pe-1" />
         <FieldButton className="mr-1 w-6 outline-offset-0">

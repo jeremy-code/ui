@@ -14,9 +14,8 @@ import {
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { cn, tv, type VariantProps } from "tailwind-variants";
 
-import { Description } from "./form";
+import { Description, ErrorMessage } from "./form";
 import { focusRing } from "../utils/focusRing";
-import { ErrorMessage } from "./form/ErrorMessage";
 
 const DEFAULT_COLOR = "gray";
 
@@ -93,7 +92,7 @@ const TagGroup = <T extends object>({
 }: TagGroupProps<T>) => {
   return (
     <AriaTagGroup className={cn("flex flex-col gap-2", className)} {...props}>
-      <Label>{label}</Label>
+      {label && <Label>{label}</Label>}
       <ColorContext value={color ?? DEFAULT_COLOR}>
         <TagList
           items={items}

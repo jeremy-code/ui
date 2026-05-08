@@ -30,7 +30,7 @@ const CheckboxGroup = ({
     >
       {composeRenderProps(children, (children) => (
         <>
-          <Label>{label}</Label>
+          {label && <Label>{label}</Label>}
           {children}
           {description && <Description>{description}</Description>}
           <FieldError>{errorMessage}</FieldError>

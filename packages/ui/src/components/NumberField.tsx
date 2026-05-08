@@ -5,7 +5,7 @@ import {
   Button,
   type ButtonProps as StepperButtonProps,
 } from "react-aria-components/NumberField";
-import { cn } from "tailwind-variants";
+import { cn, type VariantProps } from "tailwind-variants";
 
 import {
   FieldError,
@@ -13,10 +13,11 @@ import {
   Label,
   Input,
   Description,
+  fieldBorderVariants,
   type FieldErrorMessage,
+  type inputVariants,
 } from "./form";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
-import { fieldBorderVariants } from "./form/FieldGroup";
 
 const StepperButton = ({ className, ...props }: StepperButtonProps) => {
   return (
@@ -35,7 +36,8 @@ type NumberFieldProps = {
   placeholder?: string;
   description?: string;
   errorMessage?: FieldErrorMessage;
-} & Omit<AriaNumberFieldProps, "children">;
+} & Omit<AriaNumberFieldProps, "children"> &
+  VariantProps<typeof inputVariants>;
 
 const NumberField = ({
   className,
@@ -43,21 +45,19 @@ const NumberField = ({
   placeholder,
   description,
   errorMessage,
+  size,
   ...props
 }: NumberFieldProps) => {
   return (
     <AriaNumberField
-      className={composeTailwindRenderProps(
-        className,
-        "group flex flex-col gap-1",
-      )}
+      className={composeTailwindRenderProps(className, "flex flex-col gap-1")}
       {...props}
     >
-      <Label>{label}</Label>
+      {label && <Label>{label}</Label>}
       <FieldGroup>
         {(renderProps) => (
           <>
-            <Input className="grow" placeholder={placeholder} />
+            <Input className="grow" placeholder={placeholder} size={size} />
             <div
               className={fieldBorderVariants({
                 ...renderProps,

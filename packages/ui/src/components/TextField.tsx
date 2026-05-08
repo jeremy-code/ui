@@ -1,8 +1,9 @@
+import { composeRenderProps } from "react-aria-components";
 import {
   TextField as AriaTextField,
   type TextFieldProps as AriaTextFieldProps,
 } from "react-aria-components/TextField";
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 import {
   Description,
@@ -10,7 +11,9 @@ import {
   Input,
   Label,
   fieldBorderVariants,
+  inputVariants as rootInputVariants,
   type FieldErrorMessage,
+  type InputProps,
 } from "./form";
 import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 import { focusRing } from "../utils/focusRing";
@@ -30,13 +33,15 @@ type TextFieldProps = AriaTextFieldProps & {
   placeholder?: string;
   description?: string;
   errorMessage?: FieldErrorMessage;
-};
+  inputProps?: InputProps;
+} & VariantProps<typeof rootInputVariants>;
 
 const TextField = ({
   className,
   label,
   description,
   errorMessage,
+  size,
   ...props
 }: TextFieldProps) => {
   return (
@@ -45,7 +50,15 @@ const TextField = ({
       {...props}
     >
       {label && <Label>{label}</Label>}
-      <Input className={inputVariants} />
+      <Input
+        size={size}
+        {...props.inputProps}
+        className={composeRenderProps(
+          props.inputProps?.className,
+          (className, renderProps) =>
+            inputVariants({ ...renderProps, className }),
+        )}
+      />
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>
