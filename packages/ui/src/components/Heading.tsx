@@ -5,7 +5,7 @@ import {
 import { tv, type VariantProps } from "tailwind-variants";
 
 const headingVariants = tv({
-  base: "text-foreground",
+  base: "text-fg",
   variants: {
     fontWeight: {
       thin: "font-thin",
