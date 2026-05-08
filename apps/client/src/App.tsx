@@ -53,7 +53,11 @@ import { Tag, TagGroup, type TagProps } from "@ui/ui/components/TagGroup";
 import { TextAreaField } from "@ui/ui/components/TextAreaField";
 import { TextField } from "@ui/ui/components/TextField";
 import { ToastRegion, toastQueue } from "@ui/ui/components/Toast";
-import { Focusable, Tooltip, TooltipTrigger } from "@ui/ui/components/Tooltip";
+import {
+  TooltipTarget,
+  Tooltip,
+  TooltipTrigger,
+} from "@ui/ui/components/Tooltip";
 import { Form } from "@ui/ui/components/form/index";
 import { Github } from "@ui/ui/components/icons/Github";
 
@@ -125,9 +129,9 @@ const App = () => {
           {(item) => <ComboBoxItem>{item.name}</ComboBoxItem>}
         </ComboBox>
         <TooltipTrigger>
-          <Focusable>
+          <TooltipTarget>
             <span role="button">Tooltip</span>
-          </Focusable>
+          </TooltipTarget>
           <Tooltip>Tooltip has been opened</Tooltip>
         </TooltipTrigger>
         <DialogTrigger>
