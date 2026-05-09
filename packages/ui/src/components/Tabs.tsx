@@ -215,7 +215,7 @@ const TabPanels = <T extends object>(props: TabPanelsProps<T>) => {
     <AriaTabPanels
       {...props}
       className={cn(
-        "relative h-(--tab-panel-height) overflow-clip motion-safe:transition-[height]",
+        "relative h-(--tab-panel-height) motion-safe:transition-[height]",
         props.className,
       )}
     />
