@@ -2,9 +2,9 @@ import babel from "@rolldown/plugin-babel";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
+import { fontless } from "fontless";
 import { Features } from "lightningcss";
 import { defineConfig } from "vite";
-import { viteWebfontDownload } from "vite-plugin-webfont-dl";
 
 const viteConfig = defineConfig({
   plugins: [
@@ -16,7 +16,7 @@ const viteConfig = defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
-    viteWebfontDownload(),
+    fontless(),
   ],
   css: {
     transformer: "lightningcss",
