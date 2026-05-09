@@ -14,7 +14,7 @@ import { OverlayArrow } from "./OverlayArrow";
 
 const tooltipVariants = tv({
   base: [
-    "max-w-xs origin-(--trigger-anchor-point) rounded-sm border border-border px-2.5 py-1 text-xs/4 font-medium",
+    "max-w-xs origin-(--trigger-anchor-point) rounded-sm border border-border bg-surface px-2.5 py-1 text-xs/4 font-medium",
   ],
   variants: {
     isEntering: {
