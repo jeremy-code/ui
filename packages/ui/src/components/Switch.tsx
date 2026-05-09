@@ -22,10 +22,9 @@ const switchTrackVariants = tv({
   ],
 });
 
-type SwitchTrackProps = ComponentPropsWithRef<"div"> &
-  VariantProps<typeof switchTrackVariants> & {
-    renderProps?: SwitchRenderProps;
-  };
+type SwitchTrackProps = {
+  renderProps?: SwitchRenderProps;
+} & ComponentPropsWithRef<"div">;
 
 const SwitchTrack = ({
   className,
@@ -73,33 +72,33 @@ const switchVariants = tv({
   defaultVariants: { size: "md" },
 });
 
-type SwitchProps = {
-  switchTrackProps?: SwitchTrackProps;
-} & AriaSwitchProps &
-  VariantProps<typeof switchVariants>;
+type SwitchRootProps = AriaSwitchProps & VariantProps<typeof switchVariants>;
 
-const Switch = ({
-  children,
-  className,
-  switchTrackProps,
-  size,
-  ...props
-}: SwitchProps) => (
+const SwitchRoot = ({ className, size, ...props }: SwitchRootProps) => (
   <AriaSwitch
     className={composeRenderProps(className, (className, renderProps) =>
       switchVariants({ className, size, ...renderProps }),
     )}
     {...props}
-  >
+  />
+);
+
+type SwitchProps = {
+  switchTrackProps?: SwitchTrackProps;
+  switchHandleProps?: SwitchHandleProps;
+} & SwitchRootProps;
+
+const Switch = ({ children, switchTrackProps, ...props }: SwitchProps) => (
+  <SwitchRoot {...props}>
     {composeRenderProps(children, (children, renderProps) => (
       <>
         <SwitchTrack renderProps={renderProps} {...switchTrackProps}>
-          <SwitchHandle />
+          <SwitchHandle {...switchTrackProps} />
         </SwitchTrack>
         {children}
       </>
     ))}
-  </AriaSwitch>
+  </SwitchRoot>
 );
 
 export {
@@ -109,6 +108,8 @@ export {
   SwitchHandle,
   type SwitchHandleProps,
   switchHandleVariants,
+  SwitchRoot,
+  type SwitchRootProps,
   Switch,
   type SwitchProps,
   switchVariants,
