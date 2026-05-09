@@ -44,7 +44,7 @@ const DateSegment = ({ className, ...props }: DateSegmentProps) => {
 const dateInputVariants = tv({
   extend: fieldGroupVariants,
   base: [
-    "inline h-9 min-w-37.5 cursor-text overflow-visible px-3 text-sm/8.5 whitespace-nowrap [scrollbar-width:none]",
+    "inline h-9 min-w-37.5 cursor-text scrollbar-none overflow-visible px-3 text-sm/8.5 whitespace-nowrap",
     "placeholder:text-fg-muted",
   ],
   variants: {
