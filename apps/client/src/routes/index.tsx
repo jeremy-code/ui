@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Folder, Home, MoreHorizontal, Search, Settings } from "lucide-react";
-import { ThemeProvider } from "next-themes";
 import { useListData } from "react-aria-components/useListData";
 
 import {
@@ -89,234 +88,226 @@ const IndexComponent = () => {
   const list = useListData({ initialItems: INITIAL_ITEMS });
 
   return (
-    <ThemeProvider>
-      <div className="container mx-auto flex flex-col items-start gap-2 p-2">
-        <Heading size="xl" fontWeight="semibold" level={1}>
-          jeremy-code/ui
-        </Heading>
-        <Link
-          underline={false}
-          className={(renderProps) => buttonVariants(renderProps)}
-          href="https://github.com/jeremy-code/ui"
-          target="_blank"
-        >
-          <Github aria-hidden />
-          Github
-        </Link>
-        <ThemeToggle>Toggle theme</ThemeToggle>
-        <Separator className="my-2" />
-        <Link color="blue" underline="hover" href="/">
-          This is a link
-        </Link>
-        <Checkbox>Checkbox</Checkbox>
-        <PopoverTrigger>
-          <Button variant="surface" aria-label="Settings">
-            Open popover
-          </Button>
-          <Popover className="flex flex-col gap-2 p-4" showArrow>
-            Popover content
-          </Popover>
-        </PopoverTrigger>
-        <Select label="Favorite Animal" items={INITIAL_ITEMS}>
-          {(item) => <SelectItem>{item.name}</SelectItem>}
-        </Select>
-        <Skeleton className="h-13 w-full" />
-        <NumberField
-          placeholder="32"
-          defaultValue={1024}
-          minValue={0}
-          label="Number field"
-        />
-        <TextField placeholder="Steve Jobs" label="Text field" />
-        <ComboBox
-          label="Favorite animal"
-          placeholder="Shopping"
-          items={INITIAL_ITEMS}
-        >
-          {(item) => <ComboBoxItem>{item.name}</ComboBoxItem>}
-        </ComboBox>
-        <TooltipTrigger>
-          <TooltipTarget>
-            <span role="button">Tooltip</span>
-          </TooltipTarget>
-          <Tooltip>Tooltip has been opened</Tooltip>
-        </TooltipTrigger>
-        <DialogTrigger>
-          <Button>Dialog trigger</Button>
-          <Modal>
-            <Dialog className="flex flex-col gap-4">
-              {(renderProps) => (
-                <>
-                  <DialogCloseButton />
-                  <DialogTitle>Subscribe to our newsletter</DialogTitle>
-                  <p className="text-sm">
-                    Enter your information to subscribe to our newsletter and
-                    receive updates about new features and announcements.
-                  </p>
-                  <Form
-                    onSubmit={(event) => {
-                      event.preventDefault();
-                      renderProps.close();
-                    }}
-                  >
-                    <ComboBox
-                      popoverProps={{ className: "max-h-[100px]" }}
-                      label="Favorite animal"
-                      items={LONG_INITIAL_ITEMS}
-                    >
-                      {(item) => <ComboBoxItem>{item.name}</ComboBoxItem>}
-                    </ComboBox>
-                    <TextField
-                      autoFocus
-                      label="Name"
-                      placeholder="Enter your full name"
-                    />
-                    <TextField
-                      label="Email"
-                      type="email"
-                      placeholder="Enter your email"
-                    />
-                    <div className="flex gap-2 self-end">
-                      <Button slot="close" variant="ghost">
-                        Cancel
-                      </Button>
-                      <Button type="submit" variant="muted">
-                        Subscribe
-                      </Button>
-                    </div>
-                  </Form>
-                  <Disclosure>
-                    <DisclosureHeader>Test scrolling</DisclosureHeader>
-                    <DisclosurePanel>
-                      <ul className="flex list-disc flex-col gap-2">
-                        {LONG_INITIAL_ITEMS.map((item) => (
-                          <li key={item.id}>{item.name}</li>
-                        ))}
-                      </ul>
-                    </DisclosurePanel>
-                  </Disclosure>
-                </>
-              )}
-            </Dialog>
-          </Modal>
-        </DialogTrigger>
-        <Switch>Switch</Switch>
-        <TagGroup
-          label="Categories"
-          selectionMode="multiple"
-          items={INITIAL_ITEMS}
-        >
-          {({ name, ...item }) => <Tag {...item}>{name}</Tag>}
-        </TagGroup>
-        <TagGroup
-          label="Categories"
-          items={list.items}
-          onRemove={(keys) => list.remove(...keys)}
-          tagListProps={{
-            renderEmptyState: () => <div>No categories</div>,
-          }}
-        >
-          {({ name, ...item }) => <Tag {...item}>{name}</Tag>}
-        </TagGroup>
-        <ToastRegion />
-        <Button
-          onPress={() =>
-            toastQueue.add({
-              title: "Files uploaded",
-              description: "3 files uploaded successfully.",
-              toastProps: { color: "accent" },
-            })
-          }
-        >
-          Show Toast
+    <div className="container mx-auto flex flex-col items-start gap-2 p-2">
+      <Heading size="xl" fontWeight="semibold" level={1}>
+        jeremy-code/ui
+      </Heading>
+      <Link
+        underline={false}
+        className={(renderProps) => buttonVariants(renderProps)}
+        href="https://github.com/jeremy-code/ui"
+        target="_blank"
+      >
+        <Github aria-hidden />
+        Github
+      </Link>
+      <ThemeToggle>Toggle theme</ThemeToggle>
+      <Separator className="my-2" />
+      <Link color="blue" underline="hover" href="/">
+        This is a link
+      </Link>
+      <Checkbox>Checkbox</Checkbox>
+      <PopoverTrigger>
+        <Button variant="surface" aria-label="Settings">
+          Open popover
         </Button>
-        <DataList>
-          {INITIAL_ITEMS.map((item) => (
-            <DataListItem key={item.id}>
-              <DataListItemLabel>{item.name}</DataListItemLabel>
-              <DataListItemValue>{item.color}</DataListItemValue>
-            </DataListItem>
-          ))}
-        </DataList>
-        <DateField label="Date field" />
-        <DatePicker label="datePicker" />
-        <TextAreaField label="TextArea field" placeholder="Placeholder" />
-        <Accordion variant="enclosed">
-          <AccordionItem>
-            <AccordionHeader>Personal Information</AccordionHeader>
-            <AccordionPanel>Personal information form here.</AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <AccordionHeader>Billing Address</AccordionHeader>
-            <AccordionPanel>Billing address form here.</AccordionPanel>
-          </AccordionItem>
-        </Accordion>
-        <DisclosureGroup>
-          <Disclosure>
-            <DisclosureHeader>Personal Information</DisclosureHeader>
-            <DisclosurePanel>Personal information form here.</DisclosurePanel>
-          </Disclosure>
-          <Disclosure>
-            <DisclosureHeader>Billing Address</DisclosureHeader>
-            <DisclosurePanel>Billing address form here.</DisclosurePanel>
-          </Disclosure>
-        </DisclosureGroup>
-        <Tabs>
-          <TabList aria-label="Tabs" variant="enclosed">
-            <Tab id="home">Home</Tab>
-            <Tab id="files">Files</Tab>
-            <Tab isDisabled={true} id="search">
-              Search
-            </Tab>
-            <Tab id="settings">Settings</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel id="home" className="flex items-center justify-center">
-              <Home />
-            </TabPanel>
-            <TabPanel id="files" className="flex items-center justify-center">
-              <Folder />
-            </TabPanel>
-            <TabPanel id="search" className="flex items-center justify-center">
-              <Search />
-            </TabPanel>
-            <TabPanel
-              id="settings"
-              className="flex items-center justify-center"
-            >
-              <Settings />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-        <MenuTrigger>
-          <Button size="icon" aria-label="Actions">
-            <MoreHorizontal className="size-4" />
-          </Button>
-          <Menu>
-            <MenuItem onAction={() => alert("open")}>Open</MenuItem>
-            <MenuItem onAction={() => alert("rename")}>Rename…</MenuItem>
-            <MenuItem onAction={() => alert("duplicate")}>Duplicate</MenuItem>
-            <MenuItem onAction={() => alert("delete")}>Delete…</MenuItem>
-            <SubmenuTrigger>
-              <MenuItem>Share</MenuItem>
-              <Menu>
-                <MenuItem>Email</MenuItem>
-                <MenuItem>SMS</MenuItem>
-                <MenuItem>Instagram</MenuItem>
-              </Menu>
-            </SubmenuTrigger>
-            <MenuSeparator />
-            <MenuSection
-              selectionMode="multiple"
-              defaultSelectedKeys={["files"]}
-            >
-              <MenuItem id="files">Show files</MenuItem>
-              <MenuItem id="folders">Show folders</MenuItem>
-            </MenuSection>
-          </Menu>
-        </MenuTrigger>
-      </div>
-    </ThemeProvider>
+        <Popover className="flex flex-col gap-2 p-4" showArrow>
+          Popover content
+        </Popover>
+      </PopoverTrigger>
+      <Select label="Favorite Animal" items={INITIAL_ITEMS}>
+        {(item) => <SelectItem>{item.name}</SelectItem>}
+      </Select>
+      <Skeleton className="h-13 w-full" />
+      <NumberField
+        placeholder="32"
+        defaultValue={1024}
+        minValue={0}
+        label="Number field"
+      />
+      <TextField placeholder="Steve Jobs" label="Text field" />
+      <ComboBox
+        label="Favorite animal"
+        placeholder="Shopping"
+        items={INITIAL_ITEMS}
+      >
+        {(item) => <ComboBoxItem>{item.name}</ComboBoxItem>}
+      </ComboBox>
+      <TooltipTrigger>
+        <TooltipTarget>
+          <span role="button">Tooltip</span>
+        </TooltipTarget>
+        <Tooltip>Tooltip has been opened</Tooltip>
+      </TooltipTrigger>
+      <DialogTrigger>
+        <Button>Dialog trigger</Button>
+        <Modal>
+          <Dialog className="flex flex-col gap-4">
+            {(renderProps) => (
+              <>
+                <DialogCloseButton />
+                <DialogTitle>Subscribe to our newsletter</DialogTitle>
+                <p className="text-sm">
+                  Enter your information to subscribe to our newsletter and
+                  receive updates about new features and announcements.
+                </p>
+                <Form
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    renderProps.close();
+                  }}
+                >
+                  <ComboBox
+                    popoverProps={{ className: "max-h-[100px]" }}
+                    label="Favorite animal"
+                    items={LONG_INITIAL_ITEMS}
+                  >
+                    {(item) => <ComboBoxItem>{item.name}</ComboBoxItem>}
+                  </ComboBox>
+                  <TextField
+                    autoFocus
+                    label="Name"
+                    placeholder="Enter your full name"
+                  />
+                  <TextField
+                    label="Email"
+                    type="email"
+                    placeholder="Enter your email"
+                  />
+                  <div className="flex gap-2 self-end">
+                    <Button slot="close" variant="ghost">
+                      Cancel
+                    </Button>
+                    <Button type="submit" variant="muted">
+                      Subscribe
+                    </Button>
+                  </div>
+                </Form>
+                <Disclosure>
+                  <DisclosureHeader>Test scrolling</DisclosureHeader>
+                  <DisclosurePanel>
+                    <ul className="flex list-disc flex-col gap-2">
+                      {LONG_INITIAL_ITEMS.map((item) => (
+                        <li key={item.id}>{item.name}</li>
+                      ))}
+                    </ul>
+                  </DisclosurePanel>
+                </Disclosure>
+              </>
+            )}
+          </Dialog>
+        </Modal>
+      </DialogTrigger>
+      <Switch>Switch</Switch>
+      <TagGroup
+        label="Categories"
+        selectionMode="multiple"
+        items={INITIAL_ITEMS}
+      >
+        {({ name, ...item }) => <Tag {...item}>{name}</Tag>}
+      </TagGroup>
+      <TagGroup
+        label="Categories"
+        items={list.items}
+        onRemove={(keys) => list.remove(...keys)}
+        tagListProps={{
+          renderEmptyState: () => <div>No categories</div>,
+        }}
+      >
+        {({ name, ...item }) => <Tag {...item}>{name}</Tag>}
+      </TagGroup>
+      <ToastRegion />
+      <Button
+        onPress={() =>
+          toastQueue.add({
+            title: "Files uploaded",
+            description: "3 files uploaded successfully.",
+            toastProps: { color: "accent" },
+          })
+        }
+      >
+        Show Toast
+      </Button>
+      <DataList>
+        {INITIAL_ITEMS.map((item) => (
+          <DataListItem key={item.id}>
+            <DataListItemLabel>{item.name}</DataListItemLabel>
+            <DataListItemValue>{item.color}</DataListItemValue>
+          </DataListItem>
+        ))}
+      </DataList>
+      <DateField label="Date field" />
+      <DatePicker label="datePicker" />
+      <TextAreaField label="TextArea field" placeholder="Placeholder" />
+      <Accordion variant="enclosed">
+        <AccordionItem>
+          <AccordionHeader>Personal Information</AccordionHeader>
+          <AccordionPanel>Personal information form here.</AccordionPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionHeader>Billing Address</AccordionHeader>
+          <AccordionPanel>Billing address form here.</AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+      <DisclosureGroup>
+        <Disclosure>
+          <DisclosureHeader>Personal Information</DisclosureHeader>
+          <DisclosurePanel>Personal information form here.</DisclosurePanel>
+        </Disclosure>
+        <Disclosure>
+          <DisclosureHeader>Billing Address</DisclosureHeader>
+          <DisclosurePanel>Billing address form here.</DisclosurePanel>
+        </Disclosure>
+      </DisclosureGroup>
+      <Tabs>
+        <TabList aria-label="Tabs" variant="enclosed">
+          <Tab id="home">Home</Tab>
+          <Tab id="files">Files</Tab>
+          <Tab isDisabled={true} id="search">
+            Search
+          </Tab>
+          <Tab id="settings">Settings</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel id="home" className="flex items-center justify-center">
+            <Home />
+          </TabPanel>
+          <TabPanel id="files" className="flex items-center justify-center">
+            <Folder />
+          </TabPanel>
+          <TabPanel id="search" className="flex items-center justify-center">
+            <Search />
+          </TabPanel>
+          <TabPanel id="settings" className="flex items-center justify-center">
+            <Settings />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+      <MenuTrigger>
+        <Button size="icon" aria-label="Actions">
+          <MoreHorizontal className="size-4" />
+        </Button>
+        <Menu>
+          <MenuItem onAction={() => alert("open")}>Open</MenuItem>
+          <MenuItem onAction={() => alert("rename")}>Rename…</MenuItem>
+          <MenuItem onAction={() => alert("duplicate")}>Duplicate</MenuItem>
+          <MenuItem onAction={() => alert("delete")}>Delete…</MenuItem>
+          <SubmenuTrigger>
+            <MenuItem>Share</MenuItem>
+            <Menu>
+              <MenuItem>Email</MenuItem>
+              <MenuItem>SMS</MenuItem>
+              <MenuItem>Instagram</MenuItem>
+            </Menu>
+          </SubmenuTrigger>
+          <MenuSeparator />
+          <MenuSection selectionMode="multiple" defaultSelectedKeys={["files"]}>
+            <MenuItem id="files">Show files</MenuItem>
+            <MenuItem id="folders">Show folders</MenuItem>
+          </MenuSection>
+        </Menu>
+      </MenuTrigger>
+    </div>
   );
 };
 

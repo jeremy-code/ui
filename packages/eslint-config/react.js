@@ -23,6 +23,19 @@ const reactConfig = defineConfig(
         ...globals.serviceworker,
       },
     },
+    rules: {
+      /**
+       * @see {@link https://typescript-eslint.io/rules/no-misused-promises/}
+       */
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          checksVoidReturn: {
+            attributes: false,
+          },
+        },
+      ],
+    },
   },
   disablesConfig,
 );

@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
+import { AppProvider } from "#components/AppProvider";
 import uiCss from "@ui/ui/globals.css?url";
 
 const RootDocument = ({ children }: Readonly<{ children: ReactNode }>) => {
@@ -27,7 +28,9 @@ const RootDocument = ({ children }: Readonly<{ children: ReactNode }>) => {
 const RootComponent = () => {
   return (
     <RootDocument>
-      <Outlet />
+      <AppProvider>
+        <Outlet />
+      </AppProvider>
     </RootDocument>
   );
 };
