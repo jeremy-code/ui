@@ -1,6 +1,6 @@
 import "@ui/ui/globals.css";
 
-import { Folder, Home, Search, Settings } from "lucide-react";
+import { Folder, Home, MoreHorizontal, Search, Settings } from "lucide-react";
 import { ThemeProvider } from "next-themes";
 import { useListData } from "react-aria-components/useListData";
 
@@ -35,6 +35,14 @@ import {
 import { DisclosureGroup } from "@ui/ui/components/DisclosureGroup";
 import { Heading } from "@ui/ui/components/Heading";
 import { Link } from "@ui/ui/components/Link";
+import {
+  Menu,
+  MenuItem,
+  MenuSection,
+  MenuSeparator,
+  MenuTrigger,
+  SubmenuTrigger,
+} from "@ui/ui/components/Menu";
 import { Modal } from "@ui/ui/components/Modal";
 import { NumberField } from "@ui/ui/components/NumberField";
 import { Popover, PopoverTrigger } from "@ui/ui/components/Popover";
@@ -281,6 +289,33 @@ const App = () => {
             </TabPanel>
           </TabPanels>
         </Tabs>
+        <MenuTrigger>
+          <Button size="icon" aria-label="Actions">
+            <MoreHorizontal className="size-4" />
+          </Button>
+          <Menu>
+            <MenuItem onAction={() => alert("open")}>Open</MenuItem>
+            <MenuItem onAction={() => alert("rename")}>Rename…</MenuItem>
+            <MenuItem onAction={() => alert("duplicate")}>Duplicate</MenuItem>
+            <MenuItem onAction={() => alert("delete")}>Delete…</MenuItem>
+            <SubmenuTrigger>
+              <MenuItem>Share</MenuItem>
+              <Menu>
+                <MenuItem>Email</MenuItem>
+                <MenuItem>SMS</MenuItem>
+                <MenuItem>Instagram</MenuItem>
+              </Menu>
+            </SubmenuTrigger>
+            <MenuSeparator />
+            <MenuSection
+              selectionMode="multiple"
+              defaultSelectedKeys={["files"]}
+            >
+              <MenuItem id="files">Show files</MenuItem>
+              <MenuItem id="folders">Show folders</MenuItem>
+            </MenuSection>
+          </Menu>
+        </MenuTrigger>
       </div>
     </ThemeProvider>
   );
