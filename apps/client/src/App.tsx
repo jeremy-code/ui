@@ -60,7 +60,7 @@ import {
 import { Tag, TagGroup, type TagProps } from "@ui/ui/components/TagGroup";
 import { TextAreaField } from "@ui/ui/components/TextAreaField";
 import { TextField } from "@ui/ui/components/TextField";
-import { ToastRegion, toastQueue } from "@ui/ui/components/Toast";
+import { toastQueue } from "@ui/ui/components/Toast";
 import {
   TooltipTarget,
   Tooltip,
@@ -219,7 +219,6 @@ const App = () => {
         >
           {({ name, ...item }) => <Tag {...item}>{name}</Tag>}
         </TagGroup>
-        <ToastRegion />
         <Button
           onPress={() =>
             toastQueue.add({
