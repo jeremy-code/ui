@@ -13,7 +13,7 @@ import { focusRing } from "../utils/focusRing";
 const switchTrackVariants = tv({
   extend: focusRing,
   base: [
-    "relative inline-flex cursor-pointer justify-start gap-2 rounded-full ring-1 transition-[background-color,box-shadow,opacity] ring-inset",
+    "relative inline-flex justify-start gap-2 rounded-full ring-1 transition-[background-color,box-shadow,opacity] ring-inset",
     "shrink-0",
     "disabled:cursor-not-allowed disabled:opacity-50",
     "h-(--switch-height) w-(--switch-width)",
