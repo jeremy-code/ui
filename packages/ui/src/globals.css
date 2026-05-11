@@ -30,6 +30,10 @@
     var(--color-blue-700),
     var(--color-blue-500)
   );
+  --color-accent-pressed: light-dark(
+    var(--color-blue-800),
+    var(--color-blue-400)
+  );
   --color-accent-fg: var(--color-blue-50);
 }
 
