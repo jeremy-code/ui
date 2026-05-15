@@ -1,10 +1,11 @@
 import type { ComponentPropsWithRef } from "react";
 
 import { X } from "lucide-react";
+import { composeRenderProps } from "react-aria-components";
 import {
   DialogTrigger,
   type DialogTriggerProps,
-  type DialogProps,
+  type DialogProps as AriaDialogProps,
   Dialog as AriaDialog,
   Heading,
   type HeadingProps as DialogTitleProps,
@@ -18,8 +19,26 @@ const dialogVariants = tv({
   base: ["relative max-h-[inherit] overflow-auto p-6 outline-0"],
 });
 
-const Dialog = ({ className, ...props }: DialogProps) => {
-  return <AriaDialog className={dialogVariants({ className })} {...props} />;
+type DialogProps = {
+  closeButton?: boolean;
+} & AriaDialogProps;
+
+const Dialog = ({
+  className,
+  children,
+  closeButton = true,
+  ...props
+}: DialogProps) => {
+  return (
+    <AriaDialog className={dialogVariants({ className })} {...props}>
+      {composeRenderProps(children, (children) => (
+        <>
+          {children}
+          {closeButton && <DialogCloseButton />}
+        </>
+      ))}
+    </AriaDialog>
+  );
 };
 
 const DialogTitle = ({ className, ...props }: DialogTitleProps) => (
