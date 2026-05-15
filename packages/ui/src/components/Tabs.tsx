@@ -106,7 +106,7 @@ const tabListVariants = tv({
         selectionIndicator: "rounded-(--tabs-tab-radius) bg-bg-muted",
       },
       enclosed: {
-        base: "min-h-[calc(var(--tabs-height)---spacing(1))] rounded-md bg-bg-muted p-1",
+        base: "min-h-[calc(var(--tabs-height)-(--spacing(1)))] rounded-md bg-bg-muted p-1",
         tab: [
           "justify-center rounded-(--tabs-tab-radius) text-fg-muted selected:text-fg",
         ],
