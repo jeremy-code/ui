@@ -89,7 +89,7 @@ const tabListVariants = tv({
       line: {
         base: "flex border-border orientation-horizontal:border-b orientation-vertical:border-r",
         tab: [
-          "selected:text-foreground text-fg-muted disabled:selected:bg-[initial]",
+          "text-fg-muted selected:text-fg disabled:selected:bg-[initial]",
           "selected:after:absolute selected:after:bg-fg",
           "group-orientation-horizontal/tabs:selected:after:inset-x-0 group-orientation-horizontal/tabs:selected:after:-bottom-px group-orientation-horizontal/tabs:selected:after:h-0.5",
           "group-orientation-vertical/tabs:selected:after:inset-y-0 group-orientation-vertical/tabs:selected:after:-right-px group-orientation-vertical/tabs:selected:after:w-0.5",
@@ -227,7 +227,7 @@ const tabPanelVariants = tv({
   base: [
     "flex-1 p-4 text-sm text-fg-boldest transition",
     "entering:opacity-0",
-    "exiting:absolute exiting:top-0 exiting:left-0 exiting:w-full exiting:opacity-0",
+    "exiting:absolute exiting:inset-0 exiting:opacity-0",
   ],
 });
 
