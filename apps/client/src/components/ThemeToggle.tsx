@@ -1,14 +1,15 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Switch } from "react-aria-components/Switch";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 
 import {
+  SwitchRoot,
   SwitchHandle,
   SwitchTrack,
-  switchVariants,
   type SwitchProps,
 } from "@ui/ui/components/Switch";
+
+type ThemeToggleProps = SwitchProps;
 
 const ThemeToggle = ({
   children,
@@ -16,17 +17,14 @@ const ThemeToggle = ({
   switchTrackProps,
   size,
   ...props
-}: SwitchProps) => {
+}: ThemeToggleProps) => {
   const { theme, setTheme } = useTheme();
   const isLight = theme === "light";
   const Icon = isLight ? Sun : Moon;
   const ariaLabel = isLight ? "Switch to dark mode" : "Switch to light mode";
 
   return (
-    <Switch
-      className={composeRenderProps(className, (className, renderProps) =>
-        switchVariants({ className, size, ...renderProps }),
-      )}
+    <SwitchRoot
       isSelected={isLight}
       onChange={(isSelected) => setTheme(isSelected ? "light" : "dark")}
       {...props}
@@ -41,8 +39,8 @@ const ThemeToggle = ({
           {children}
         </>
       ))}
-    </Switch>
+    </SwitchRoot>
   );
 };
 
-export { ThemeToggle };
+export { ThemeToggle, type ThemeToggleProps };
