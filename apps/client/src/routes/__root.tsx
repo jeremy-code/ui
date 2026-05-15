@@ -7,13 +7,16 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { useLocale } from "react-aria";
 
 import { AppProvider } from "#components/AppProvider";
 import uiCss from "@ui/ui/globals.css?url";
 
 const RootDocument = ({ children }: Readonly<{ children: ReactNode }>) => {
+  const { locale, direction } = useLocale();
+
   return (
-    <html>
+    <html lang={locale} dir={direction}>
       <head>
         <HeadContent />
       </head>
