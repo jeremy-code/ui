@@ -7,7 +7,7 @@ import {
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv } from "tailwind-variants";
 
-import { fieldGroupVariants } from "./form";
+import { fieldGroupVariants } from "./form/FieldGroup";
 
 const dateSegmentVariants = tv({
   base: [

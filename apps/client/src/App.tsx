@@ -145,7 +145,7 @@ const App = () => {
         <DialogTrigger>
           <Button>Dialog trigger</Button>
           <Modal>
-            <Dialog className="flex flex-col gap-4">
+            <Dialog className="scrollbar-gutter-both flex flex-col gap-4">
               {(renderProps) => (
                 <>
                   <DialogCloseButton />
