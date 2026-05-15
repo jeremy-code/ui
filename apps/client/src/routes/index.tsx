@@ -58,7 +58,7 @@ import {
 import { Tag, TagGroup, type TagProps } from "@ui/ui/components/TagGroup";
 import { TextAreaField } from "@ui/ui/components/TextAreaField";
 import { TextField } from "@ui/ui/components/TextField";
-import { ToastRegion, toastQueue } from "@ui/ui/components/Toast";
+import { toastQueue } from "@ui/ui/components/Toast";
 import {
   TooltipTarget,
   Tooltip,
@@ -142,7 +142,7 @@ const IndexComponent = () => {
       <DialogTrigger>
         <Button>Dialog trigger</Button>
         <Modal>
-          <Dialog className="flex flex-col gap-4">
+          <Dialog className="scrollbar-gutter-both flex flex-col gap-4">
             {(renderProps) => (
               <>
                 <DialogCloseButton />
@@ -216,7 +216,6 @@ const IndexComponent = () => {
       >
         {({ name, ...item }) => <Tag {...item}>{name}</Tag>}
       </TagGroup>
-      <ToastRegion />
       <Button
         onPress={() =>
           toastQueue.add({
