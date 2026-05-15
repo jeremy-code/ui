@@ -27,13 +27,14 @@ const ThemeToggle = ({
     <SwitchRoot
       isSelected={isLight}
       onChange={(isSelected) => setTheme(isSelected ? "light" : "dark")}
+      aria-label={ariaLabel}
       {...props}
     >
       {composeRenderProps(children, (children, renderProps) => (
         <>
           <SwitchTrack renderProps={renderProps} {...switchTrackProps}>
             <SwitchHandle>
-              <Icon aria-label={ariaLabel} className="size-4" />
+              <Icon className="size-4" aria-hidden />
             </SwitchHandle>
           </SwitchTrack>
           {children}
