@@ -43,6 +43,11 @@
   }
 }
 
+:root {
+  /* https://developer.chrome.com/docs/css-ui/animate-to-height-auto#animate_to_and_from_intrinsic_sizing_keywords_with_interpolate-size */
+  interpolate-size: allow-keywords;
+}
+
 /* https://tailwindcss.com/docs/dark-mode#using-a-data-attribute */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
