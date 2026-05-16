@@ -76,10 +76,10 @@ type CheckboxProps = AriaCheckboxProps & VariantProps<typeof checkboxVariants>;
 const Checkbox = ({ size, ...props }: CheckboxProps) => {
   return (
     <AriaCheckbox
+      {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
         checkboxVariants({ ...renderProps, className, size }),
       )}
-      {...props}
     >
       {composeRenderProps(
         props.children,
