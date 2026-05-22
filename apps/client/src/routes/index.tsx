@@ -32,6 +32,11 @@ import {
 } from "@ui/ui/components/Disclosure";
 import { DisclosureGroup } from "@ui/ui/components/DisclosureGroup";
 import { Heading } from "@ui/ui/components/Heading";
+import {
+  InputGroup,
+  InputGroupInput,
+  InputGroupSpan,
+} from "@ui/ui/components/InputGroup";
 import { Link } from "@ui/ui/components/Link";
 import {
   Menu,
@@ -306,6 +311,28 @@ const IndexComponent = () => {
           </MenuSection>
         </Menu>
       </MenuTrigger>
+      <InputGroup>
+        <InputGroupInput
+          variant="static"
+          maxLength={3}
+          aria-label="First 3 digits"
+          placeholder="000"
+        />
+        <InputGroupSpan>-</InputGroupSpan>
+        <InputGroupInput
+          variant="static"
+          maxLength={2}
+          aria-label="Middle 2 digits"
+          placeholder="00"
+        />
+        <InputGroupSpan>-</InputGroupSpan>
+        <InputGroupInput
+          variant="static"
+          maxLength={4}
+          aria-label="Last 4 digits"
+          placeholder="0000"
+        />
+      </InputGroup>
     </div>
   );
 };
