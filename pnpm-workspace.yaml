@@ -2,11 +2,16 @@ packages:
   - apps/*
   - packages/*
 
-# Other Settings (https://pnpm.io/settings#other-settings)
-shellEmulator: true
+# Dependency Resolution (https://pnpm.io/settings#dependency-resolution)
+minimumReleaseAge: 1440
+minimumReleaseAgeStrict: true
 
 # Build settings (https://pnpm.io/settings#build-settings)
+verifyDepsBeforeRun: install
+strictDepBuilds: true
 allowBuilds:
   esbuild: true
   unrs-resolver: true
-verifyDepsBeforeRun: install
+
+# Other Settings (https://pnpm.io/settings#other-settings)
+shellEmulator: true
