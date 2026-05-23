@@ -2,6 +2,7 @@
   "name": "@ui/ui",
   "version": "0.0.0",
   "private": true,
+  "sideEffects": false,
   "exports": {
     "./*": {
       "@ui/development": "./src/*.js",
