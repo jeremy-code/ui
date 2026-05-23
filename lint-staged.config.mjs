@@ -1,9 +1,10 @@
 /** @import { Configuration } from "lint-staged" */
 
 /**
+ * @see {@link https://github.com/lint-staged/lint-staged#configuration}
  * @satisfies {Configuration}
  */
-export default {
+const lintStagedConfig = {
   /**
    * Prevents turbo from seeing the filenames as tasks and instead passes them
    * as arguments.
@@ -13,3 +14,5 @@ export default {
   "*.{js,mjs,cjs,ts,tsx,mts,cts}": ["turbo run lint --", "prettier --check"],
   "*.{json,md,yaml,yml}": "prettier --check",
 };
+
+export default lintStagedConfig;
