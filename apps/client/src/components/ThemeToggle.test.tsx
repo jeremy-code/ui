@@ -8,7 +8,7 @@ let mockTheme = "light";
 const mockSetTheme = vi.fn();
 
 vi.mock("next-themes", () => ({
-  useTheme: () => ({ setTheme: mockSetTheme, theme: mockTheme }),
+  useTheme: () => ({ theme: mockTheme, setTheme: mockSetTheme }),
 }));
 
 describe("ThemeToggle", () => {
@@ -17,8 +17,8 @@ describe("ThemeToggle", () => {
 
     const screen = await render(<ThemeToggle data-testid="theme-toggle" />);
 
-    expect(screen.getByLabelText("Switch to dark mode")).toBeInTheDocument();
-    expect(screen.getByTestId("theme-toggle")).toHaveAttribute(
+    expect(screen.getByLabelText("Switch to dark theme")).toBeInTheDocument();
+    expect(screen.getByTestId("theme-toggle")).not.toHaveAttribute(
       "data-selected",
       "true",
     );
@@ -29,8 +29,8 @@ describe("ThemeToggle", () => {
 
     const screen = await render(<ThemeToggle data-testid="theme-toggle" />);
 
-    expect(screen.getByLabelText("Switch to light mode")).toBeInTheDocument();
-    expect(screen.getByTestId("theme-toggle")).not.toHaveAttribute(
+    expect(screen.getByLabelText("Switch to light theme")).toBeInTheDocument();
+    expect(screen.getByTestId("theme-toggle")).toHaveAttribute(
       "data-selected",
       "true",
     );
