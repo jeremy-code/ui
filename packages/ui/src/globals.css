@@ -4,6 +4,7 @@
 
 @theme {
   --font-sans: "Lexend", sans-serif;
+  --font-mono: "Fira Mono", monospace;
 }
 
 /* https://tailwindcss.com/docs/theme#referencing-other-variables */
