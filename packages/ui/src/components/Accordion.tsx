@@ -21,7 +21,7 @@ import { focusRing } from "../utils/focusRing";
 const accordionVariants = tv({
   slots: {
     base: "w-full [--accordion-radius:var(--radius-sm)]",
-    item: "[overflow-anchor:none]",
+    item: "group/accordion-item [overflow-anchor:none]",
     header: [
       "flex w-full items-center justify-between gap-3 rounded-(--accordion-radius) py-(--accordion-padding-y) text-start font-medium",
     ],
