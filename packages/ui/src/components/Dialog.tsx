@@ -1,7 +1,6 @@
 import type { ComponentPropsWithRef } from "react";
 
 import { X } from "lucide-react";
-import { composeRenderProps } from "react-aria-components";
 import {
   DialogTrigger,
   type DialogTriggerProps,
@@ -10,6 +9,7 @@ import {
   Heading,
   type HeadingProps as DialogTitleProps,
 } from "react-aria-components/Dialog";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { cn, tv } from "tailwind-variants";
 
 import { Button, type ButtonProps as DialogCloseButtonProps } from "./Button";
