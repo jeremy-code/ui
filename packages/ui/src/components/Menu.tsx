@@ -1,4 +1,4 @@
-import { Children } from "react";
+import { Children, type ReactElement } from "react";
 
 import { Check, ChevronRight, Dot } from "lucide-react";
 import {
@@ -130,9 +130,14 @@ type MenuTriggerProps = {
 } & AriaMenuTriggerProps;
 
 const MenuTrigger = (props: MenuTriggerProps) => {
+  /**
+   * @see {@link https://github.com/adobe/react-spectrum/blob/6ffb87e7d6f9083b3566d881deea5296fb38aa28/packages/%40adobe/react-spectrum/src/menu/MenuTrigger.tsx#L81}
+   * @see {@link https://react-aria.adobe.com/Menu}
+   */
+  // eslint-disable-next-line @eslint-react/no-children-to-array -- Per documentation, this is correct
   const [trigger, menu] = Children.toArray(props.children) as [
-    React.ReactElement,
-    React.ReactElement,
+    ReactElement,
+    ReactElement,
   ];
   return (
     <AriaMenuTrigger {...props}>
@@ -145,9 +150,10 @@ const MenuTrigger = (props: MenuTriggerProps) => {
 };
 
 const SubmenuTrigger = (props: SubmenuTriggerProps) => {
+  // eslint-disable-next-line @eslint-react/no-children-to-array -- See MenuTrigger, above
   const [trigger, menu] = Children.toArray(props.children) as [
-    React.ReactElement,
-    React.ReactElement,
+    ReactElement,
+    ReactElement,
   ];
   return (
     <AriaSubmenuTrigger {...props}>
