@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Folder, Home, MoreHorizontal, Search, Settings } from "lucide-react";
 import { useListData } from "react-aria-components/useListData";
 
+import { INITIAL_ITEMS, LONG_INITIAL_ITEMS } from "#constants";
 import {
   Accordion,
   AccordionHeader,
@@ -60,7 +61,7 @@ import {
   TabPanel,
   TabPanels,
 } from "@ui/ui/components/Tabs";
-import { Tag, TagGroup, type TagProps } from "@ui/ui/components/TagGroup";
+import { Tag, TagGroup } from "@ui/ui/components/TagGroup";
 import { TextAreaField } from "@ui/ui/components/TextAreaField";
 import { TextField } from "@ui/ui/components/TextField";
 import { toastQueue } from "@ui/ui/components/Toast";
@@ -73,21 +74,6 @@ import { Form } from "@ui/ui/components/form/index";
 import { Github } from "@ui/ui/components/icons/Github";
 
 import { ThemeToggle } from "../components/ThemeToggle";
-
-const INITIAL_ITEMS = [
-  { id: 1, name: "News", color: "green" },
-  { id: 2, name: "Travel", color: "yellow" },
-  { id: 3, name: "Gaming", color: "blue" },
-  { id: 4, name: "Shopping", color: "gray" },
-] satisfies ({ id: number; name: string } & TagProps)[];
-
-const LONG_INITIAL_ITEMS = [
-  ...INITIAL_ITEMS,
-  ...INITIAL_ITEMS,
-  ...INITIAL_ITEMS,
-  ...INITIAL_ITEMS,
-  ...INITIAL_ITEMS,
-].map((item, index) => ({ ...item, id: index }));
 
 const IndexComponent = () => {
   const list = useListData({ initialItems: INITIAL_ITEMS });
