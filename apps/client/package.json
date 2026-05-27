@@ -19,8 +19,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.170.7",
-    "@tanstack/react-start": "^1.168.10",
+    "@tanstack/react-router": "^1.170.8",
+    "@tanstack/react-start": "^1.168.13",
     "@ui/ui": "workspace:*",
     "lucide-react": "^1.16.0",
     "next-themes": "^0.4.6",
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@rolldown/plugin-babel": "^0.2.3",
     "@tailwindcss/vite": "^4.3.0",
+    "@tanstack/devtools-vite": "^0.7.0",
     "@types/node": "^24.12.4",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
