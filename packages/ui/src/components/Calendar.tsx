@@ -117,12 +117,7 @@ const CalendarHeader = ({
       {...props}
     >
       {monthIndex === 0 && (
-        <Button
-          variant="ghost"
-          size="icon-xs"
-          className="hover:bg-gray-200 dark:hover:bg-gray-700"
-          slot="previous"
-        >
+        <Button variant="ghost" size="icon-xs" slot="previous">
           <PreviousIcon aria-hidden size={18} />
         </Button>
       )}
@@ -131,12 +126,7 @@ const CalendarHeader = ({
         className="mx-2 my-0 flex-1 text-center font-sans text-base font-semibold text-fg-boldest [font-variation-settings:normal]"
       />
       {monthIndex === months - 1 && (
-        <Button
-          variant="ghost"
-          size="icon-xs"
-          className="hover:bg-gray-200 dark:hover:bg-gray-700"
-          slot="next"
-        >
+        <Button variant="ghost" size="icon-xs" slot="next">
           <NextIcon aria-hidden size={18} />
         </Button>
       )}
