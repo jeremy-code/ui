@@ -32,6 +32,9 @@ const switchTrackVariants = tv({
       gray: "bg-bg-muted ring-border group-hover/switch:ring-fg-subtle group-pressed/switch:ring-neutral",
     },
   },
+  defaultVariants: {
+    color: "accent",
+  },
 });
 
 type SwitchTrackProps = {
