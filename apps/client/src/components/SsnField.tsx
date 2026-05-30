@@ -3,13 +3,13 @@ import { useState } from "react";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 
 import {
-  InputGroup,
+  InputGroupField,
   InputGroupInput,
   InputGroupSpan,
-  type InputGroupProps,
+  type InputGroupFieldProps,
 } from "@ui/ui/components/InputGroup";
 
-type SsnFieldProps = InputGroupProps;
+type SsnFieldProps = InputGroupFieldProps;
 
 type Segments = [string, string, string];
 
@@ -17,13 +17,13 @@ const SsnField = (props: SsnFieldProps) => {
   const [segments, setSegments] = useState<Segments>(["", "", ""]);
 
   return (
-    <InputGroup
-      {...props}
+    <InputGroupField
       value={
         segments.every((segment) => segment !== "") ?
           segments.join("-")
         : undefined
       }
+      {...props}
     >
       {composeRenderProps(props.children, (children) => (
         <>
@@ -32,15 +32,6 @@ const SsnField = (props: SsnFieldProps) => {
             maxLength={3}
             aria-label="First 3 digits"
             placeholder="000"
-            value={segments[0]}
-            onChange={(event) => {
-              const value = event.currentTarget.value;
-              setSegments((prevSegments) => [
-                value,
-                prevSegments[1],
-                prevSegments[2],
-              ]);
-            }}
           />
           <InputGroupSpan>-</InputGroupSpan>
           <InputGroupInput
@@ -48,15 +39,6 @@ const SsnField = (props: SsnFieldProps) => {
             maxLength={2}
             aria-label="Middle 2 digits"
             placeholder="00"
-            value={segments[1]}
-            onChange={(event) => {
-              const value = event.currentTarget.value;
-              setSegments((prevSegments) => [
-                prevSegments[0],
-                value,
-                prevSegments[2],
-              ]);
-            }}
           />
           <InputGroupSpan>-</InputGroupSpan>
           <InputGroupInput
@@ -77,7 +59,7 @@ const SsnField = (props: SsnFieldProps) => {
           {children}
         </>
       ))}
-    </InputGroup>
+    </InputGroupField>
   );
 };
 

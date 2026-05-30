@@ -223,8 +223,13 @@ const IndexComponent = () => {
           </DataListItem>
         ))}
       </DataList>
-      <DateField label="Date field" />
-      <DatePicker label="datePicker" />
+      <DateField
+        label="Date field"
+        description="Description"
+        errorMessage="Error message"
+        isInvalid={true}
+      />
+      <DatePicker label="Date picker" />
       <TextAreaField label="TextArea field" placeholder="Placeholder" />
       <Accordion variant="enclosed">
         <AccordionItem>

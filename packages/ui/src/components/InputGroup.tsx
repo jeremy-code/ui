@@ -1,8 +1,11 @@
 import { type ComponentPropsWithRef, type CSSProperties } from "react";
 
-import { FocusScope, useFocusManager, useObjectRef } from "react-aria";
+import { useFocusManager } from "react-aria";
+import { FocusScope } from "react-aria/FocusScope";
+import { mergeProps } from "react-aria/mergeProps";
 import { useHasTabbableChild } from "react-aria/private/focus/useHasTabbableChild";
-import { useId } from "react-aria/useId";
+import { useField } from "react-aria/useField";
+import { useObjectRef } from "react-aria/useObjectRef";
 import { Group } from "react-aria-components/Group";
 import {
   Input,
@@ -20,11 +23,55 @@ import {
   FieldError,
 } from "./form";
 
-type InputGroupProps = {
+type InputGroupFieldProps = {
   label?: string;
   value?: InputProps["value"];
   errorMessage?: FieldErrorMessage;
-} & ComponentPropsWithRef<typeof Group>;
+  description?: string;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  isRequired?: boolean;
+  isInvalid?: boolean;
+  children?: InputGroupProps["children"];
+} & Omit<ComponentPropsWithRef<"div">, "children">;
+
+const InputGroupField = ({ children, ...props }: InputGroupFieldProps) => {
+  const { labelProps, fieldProps, descriptionProps, errorMessageProps } =
+    useField({
+      ...props,
+      labelElementType: "span",
+    });
+
+  return (
+    <div
+      data-disabled={props.isDisabled || undefined}
+      data-invalid={props.isInvalid || undefined}
+      data-readonly={props.isReadOnly || undefined}
+      data-required={props.isRequired || undefined}
+      {...props}
+    >
+      {props.label && (
+        <Label elementType="span" {...labelProps}>
+          {props.label}
+        </Label>
+      )}
+      <InputGroup
+        isInvalid={props.isInvalid || false}
+        isDisabled={props.isDisabled || false}
+        {...fieldProps}
+      >
+        {children}
+      </InputGroup>
+      <input hidden type="text" value={props.value} />
+      {props.description && (
+        <Text elementType="span" {...descriptionProps}>
+          {props.description}
+        </Text>
+      )}
+      <FieldError {...errorMessageProps}>{props.errorMessage}</FieldError>
+    </div>
+  );
+};
 
 const inputGroupVariants = tv({
   extend: fieldGroupVariants,
@@ -45,46 +92,28 @@ const inputGroupVariants = tv({
   },
 });
 
-const InputGroup = ({
-  label,
-  value,
-  ref,
-  errorMessage,
-  ...props
-}: InputGroupProps) => {
-  const id = useId();
+type InputGroupProps = ComponentPropsWithRef<typeof Group>;
+
+const InputGroup = ({ ref, ...props }: InputGroupProps) => {
   const objectRef = useObjectRef(ref);
   const tabIndex = useHasTabbableChild(objectRef) ? undefined : 0;
 
   return (
-    <div data-disabled={props.isDisabled || undefined}>
-      {label && (
-        <Label elementType="span" id={id}>
-          {label}
-        </Label>
-      )}
-      <FocusScope>
-        <Group
-          {...props}
-          className={composeRenderProps(
-            props.className,
-            (className, renderProps) =>
-              inputGroupVariants({ className, ...renderProps }),
-          )}
-          aria-labelledby={id}
-          tabIndex={tabIndex}
-          ref={objectRef}
-        >
-          {composeRenderProps(props.children, (children, renderProps) => (
-            <InputContext value={{ disabled: renderProps.isDisabled }}>
-              {children}
-            </InputContext>
-          ))}
-        </Group>
-      </FocusScope>
-      <input hidden type="text" value={value} />
-      <FieldError>{errorMessage}</FieldError>
-    </div>
+    <FocusScope>
+      <Group
+        {...mergeProps(props, {
+          className: inputGroupVariants,
+          tabIndex,
+          ref: objectRef,
+        })}
+      >
+        {composeRenderProps(props.children, (children, renderProps) => (
+          <InputContext value={{ disabled: renderProps.isDisabled }}>
+            {children}
+          </InputContext>
+        ))}
+      </Group>
+    </FocusScope>
   );
 };
 
@@ -123,6 +152,7 @@ const InputGroupInput = ({ ref, variant, ...props }: InputGroupInputProps) => {
       onKeyDown={(event) => {
         if (
           (event.key === "ArrowLeft" || event.key === "Backspace") &&
+          // Cursor is at the beginning (no text selected)
           event.currentTarget.selectionStart === 0 &&
           event.currentTarget.selectionEnd === 0
         ) {
@@ -139,6 +169,7 @@ const InputGroupInput = ({ ref, variant, ...props }: InputGroupInputProps) => {
           event.preventDefault();
         } else if (
           event.key === "ArrowRight" &&
+          // Cursor is at the end
           event.currentTarget.selectionStart === props.maxLength &&
           event.currentTarget.value.length === props.maxLength
         ) {
@@ -176,8 +207,11 @@ const InputGroupSpan = (props: InputGroupSpanProps) => {
 };
 
 export {
+  InputGroupField,
+  type InputGroupFieldProps,
   InputGroup,
   type InputGroupProps,
+  inputGroupVariants,
   InputGroupInput,
   type InputGroupInputProps,
   InputGroupSpan,
