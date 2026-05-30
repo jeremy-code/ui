@@ -123,7 +123,7 @@ const CalendarHeader = ({
       )}
       <CalendarHeading
         offset={{ months: monthIndex }}
-        className="mx-2 my-0 flex-1 text-center font-sans text-base font-semibold text-fg-boldest [font-variation-settings:normal]"
+        className="mx-2 my-0 flex-1 text-center text-base font-semibold text-fg-boldest [font-variation-settings:normal]"
       />
       {monthIndex === months - 1 && (
         <Button variant="ghost" size="icon-xs" slot="next">
