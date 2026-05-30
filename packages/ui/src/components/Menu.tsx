@@ -66,7 +66,7 @@ const MenuItem = (props: MenuItemProps) => {
             {typeof children === "string" ?
               <Text
                 slot="label"
-                className="flex flex-1 items-center gap-2 truncate font-normal group-selected/list-box-item:font-semibold"
+                className="flex flex-1 items-center gap-2 truncate font-normal"
               >
                 {children}
               </Text>
