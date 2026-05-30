@@ -1,14 +1,18 @@
 import { Check, Minus } from "lucide-react";
 import {
-  Checkbox as AriaCheckbox,
-  type CheckboxProps as AriaCheckboxProps,
+  CheckboxButton as AriaCheckboxButton,
+  type CheckboxButtonProps as AriaCheckboxButtonProps,
+  CheckboxField as AriaCheckboxField,
+  type CheckboxFieldProps,
 } from "react-aria-components/Checkbox";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv, type VariantProps } from "tailwind-variants";
 
+import { Description, FieldError, type FieldErrorMessage } from "./form";
+import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 import { focusRing } from "../utils/focusRing";
 
-const checkboxVariants = tv({
+const checkboxButtonVariants = tv({
   base: [
     "group/checkbox flex items-center transition-[color] [-webkit-tap-highlight-color:transparent]",
   ],
@@ -59,7 +63,7 @@ const boxVariants = tv({
       lg: "size-6 p-0.5",
     },
   },
-  defaultVariants: checkboxVariants.defaultVariants,
+  defaultVariants: checkboxButtonVariants.defaultVariants,
 });
 
 const iconVariants = tv({
@@ -71,14 +75,15 @@ const iconVariants = tv({
   ],
 });
 
-type CheckboxProps = AriaCheckboxProps & VariantProps<typeof checkboxVariants>;
+type CheckboxButtonProps = AriaCheckboxButtonProps &
+  VariantProps<typeof checkboxButtonVariants>;
 
-const Checkbox = ({ size, ...props }: CheckboxProps) => {
+const CheckboxButton = ({ size, ...props }: CheckboxButtonProps) => {
   return (
-    <AriaCheckbox
+    <AriaCheckboxButton
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
-        checkboxVariants({ ...renderProps, className, size }),
+        checkboxButtonVariants({ ...renderProps, className, size }),
       )}
     >
       {composeRenderProps(
@@ -102,8 +107,46 @@ const Checkbox = ({ size, ...props }: CheckboxProps) => {
           </>
         ),
       )}
-    </AriaCheckbox>
+    </AriaCheckboxButton>
   );
 };
 
-export { Checkbox, type CheckboxProps, checkboxVariants };
+const CheckboxField = (props: CheckboxFieldProps) => {
+  return (
+    <AriaCheckboxField
+      {...props}
+      className={composeTailwindRenderProps(
+        props.className,
+        "group flex flex-col gap-1",
+      )}
+    />
+  );
+};
+
+type CheckboxProps = {
+  children: CheckboxButtonProps["children"];
+  description?: string;
+  errorMessage?: FieldErrorMessage;
+} & CheckboxFieldProps;
+
+const Checkbox = (props: CheckboxProps) => {
+  return (
+    <CheckboxField>
+      <CheckboxButton>{props.children}</CheckboxButton>
+      {props.description && <Description>{props.description}</Description>}
+      <FieldError>{props.errorMessage}</FieldError>
+    </CheckboxField>
+  );
+};
+
+export {
+  boxVariants,
+  iconVariants,
+  CheckboxButton,
+  type CheckboxButtonProps,
+  checkboxButtonVariants,
+  CheckboxField,
+  type CheckboxFieldProps,
+  Checkbox,
+  type CheckboxProps,
+};
