@@ -1,3 +1,4 @@
+import optimizeLocales from "@react-aria/optimize-locales-plugin";
 import babel from "@rolldown/plugin-babel";
 import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
@@ -19,6 +20,7 @@ const viteConfig = defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
     fontless(),
+    optimizeLocales.vite({ locales: ["en-US"] }),
   ],
   css: {
     transformer: "lightningcss",

@@ -33,6 +33,7 @@
     "tailwind-variants": "^3.2.2"
   },
   "devDependencies": {
+    "@react-aria/optimize-locales-plugin": "^1.2.1",
     "@rolldown/plugin-babel": "^0.2.3",
     "@tailwindcss/vite": "^4.3.0",
     "@tanstack/devtools-vite": "^0.7.0",
