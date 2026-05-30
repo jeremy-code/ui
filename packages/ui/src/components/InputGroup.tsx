@@ -99,7 +99,7 @@ const InputGroup = ({ ref, ...props }: InputGroupProps) => {
   const tabIndex = useHasTabbableChild(objectRef) ? undefined : 0;
 
   return (
-    <FocusScope>
+    <FocusScope autoFocus>
       <Group
         {...mergeProps(props, {
           className: inputGroupVariants,
