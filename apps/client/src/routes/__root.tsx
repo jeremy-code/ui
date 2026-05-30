@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useLocale } from "react-aria";
+import { useLocale } from "react-aria/I18nProvider";
 
 import { AppProvider } from "#components/AppProvider";
 import uiCss from "@ui/ui/globals.css?url";

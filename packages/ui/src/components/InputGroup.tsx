@@ -82,6 +82,7 @@ const InputGroup = ({
           ))}
         </Group>
       </FocusScope>
+      <input hidden type="text" value={value} />
       <FieldError>{errorMessage}</FieldError>
     </div>
   );
