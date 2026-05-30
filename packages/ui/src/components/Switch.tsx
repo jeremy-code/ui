@@ -17,22 +17,31 @@ const switchTrackVariants = tv({
     "shrink-0",
     "disabled:cursor-not-allowed disabled:opacity-50",
     "h-(--switch-height) w-(--switch-width)",
-    "group-not-selected/switch:bg-bg-muted group-not-selected/switch:ring-border group-hover/switch:group-not-selected/switch:ring-fg-subtle group-pressed/switch:group-not-selected/switch:ring-neutral",
-    "group-selected/switch:bg-accent group-selected/switch:ring-accent",
   ],
+  variants: {
+    color: {
+      accent: [
+        "group-not-selected/switch:bg-bg-muted group-not-selected/switch:ring-border group-hover/switch:group-not-selected/switch:ring-fg-subtle group-pressed/switch:group-not-selected/switch:ring-neutral",
+        "group-selected/switch:bg-accent group-selected/switch:ring-accent",
+      ],
+      gray: "bg-bg-muted ring-border group-hover/switch:ring-fg-subtle group-pressed/switch:ring-neutral",
+    },
+  },
 });
 
 type SwitchTrackProps = {
   renderProps?: SwitchRenderProps;
-} & ComponentPropsWithRef<"div">;
+} & ComponentPropsWithRef<"div"> &
+  VariantProps<typeof switchTrackVariants>;
 
 const SwitchTrack = ({
   className,
   renderProps,
+  color,
   ...props
 }: SwitchTrackProps) => (
   <div
-    className={switchTrackVariants({ className, ...renderProps })}
+    className={switchTrackVariants({ className, color, ...renderProps })}
     {...props}
   />
 );
@@ -61,7 +70,6 @@ const switchVariants = tv({
     isDisabled: {
       true: "disabled:text-gray-300 dark:disabled:text-gray-600 forced-colors:disabled:text-[GrayText]",
     },
-
     size: {
       xs: "[--switch-height:--spacing(3)] [--switch-width:--spacing(6)]",
       sm: "[--switch-height:--spacing(4)] [--switch-width:--spacing(8)]",

@@ -16,7 +16,15 @@ const RootDocument = ({ children }: Readonly<{ children: ReactNode }>) => {
   const { locale, direction } = useLocale();
 
   return (
-    <html lang={locale} dir={direction}>
+    /**
+     * `suppressHydrationWarning` is necessary since `<html>` element must be
+     * updated by `next-themes` for dark mode. The property only applies one
+     * level deep, so hydration warnings won't be blocked on children elements.
+     *
+     * @see {@link https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors}
+     * @see {@link https://github.com/pacocoursey/next-themes#:~:text=Note%21%20If,elements}
+     */
+    <html lang={locale} dir={direction} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
