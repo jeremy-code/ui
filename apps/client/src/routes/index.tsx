@@ -103,7 +103,7 @@ const IndexComponent = () => {
           Popover content
         </Popover>
       </PopoverTrigger>
-      <Select label="Favorite Animal" items={INITIAL_ITEMS}>
+      <Select label="Favorite Animal" items={INITIAL_ITEMS} className="w-40">
         {(item) => <SelectItem>{item.name}</SelectItem>}
       </Select>
       <Skeleton className="h-13 w-full" />
