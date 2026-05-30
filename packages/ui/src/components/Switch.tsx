@@ -1,14 +1,19 @@
 import type { ComponentPropsWithRef } from "react";
 
 import {
-  Switch as AriaSwitch,
-  type SwitchProps as AriaSwitchProps,
+  SwitchField as AriaSwitchField,
+  type SwitchFieldProps,
+  SwitchButton as AriaSwitchButton,
+  type SwitchButtonProps as AriaSwitchButtonProps,
   type SwitchRenderProps,
 } from "react-aria-components/Switch";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { tv, type VariantProps } from "tailwind-variants";
 
+import { Description, FieldError } from "./form";
+import { composeTailwindRenderProps } from "../utils/composeTailwindRenderProps";
 import { focusRing } from "../utils/focusRing";
+import type { FieldErrorMessage } from "./form/FieldError";
 
 const switchTrackVariants = tv({
   extend: focusRing,
@@ -62,7 +67,7 @@ const SwitchHandle = ({ className, ...props }: SwitchHandleProps) => (
   <div className={switchHandleVariants({ className })} {...props} />
 );
 
-const switchVariants = tv({
+const switchButtonVariants = tv({
   base: [
     "group/switch relative flex items-center gap-2 text-sm text-gray-800 transition [-webkit-tap-highlight-color:transparent] dark:text-gray-200",
   ],
@@ -80,33 +85,55 @@ const switchVariants = tv({
   defaultVariants: { size: "md" },
 });
 
-type SwitchRootProps = AriaSwitchProps & VariantProps<typeof switchVariants>;
+type SwitchButtonProps = AriaSwitchButtonProps &
+  VariantProps<typeof switchButtonVariants>;
 
-const SwitchRoot = ({ className, size, ...props }: SwitchRootProps) => (
-  <AriaSwitch
+const SwitchButton = ({ className, size, ...props }: SwitchButtonProps) => (
+  <AriaSwitchButton
     className={composeRenderProps(className, (className, renderProps) =>
-      switchVariants({ className, size, ...renderProps }),
+      switchButtonVariants({ className, size, ...renderProps }),
     )}
     {...props}
   />
 );
 
+const SwitchField = (props: SwitchFieldProps) => {
+  return (
+    <AriaSwitchField
+      {...props}
+      className={composeTailwindRenderProps(
+        props.className,
+        "flex flex-col gap-1",
+      )}
+    />
+  );
+};
+
 type SwitchProps = {
+  switchButtonProps?: SwitchButtonProps;
   switchTrackProps?: SwitchTrackProps;
   switchHandleProps?: SwitchHandleProps;
-} & SwitchRootProps;
+  children?: SwitchButtonProps["children"];
+  description?: string;
+  errorMessage?: FieldErrorMessage;
+} & Omit<SwitchFieldProps, "children"> &
+  VariantProps<typeof switchButtonVariants>;
 
-const Switch = ({ children, switchTrackProps, ...props }: SwitchProps) => (
-  <SwitchRoot {...props}>
-    {composeRenderProps(children, (children, renderProps) => (
-      <>
-        <SwitchTrack renderProps={renderProps} {...switchTrackProps}>
-          <SwitchHandle {...switchTrackProps} />
-        </SwitchTrack>
-        {children}
-      </>
-    ))}
-  </SwitchRoot>
+const Switch = ({ description, errorMessage, size, ...props }: SwitchProps) => (
+  <SwitchField {...props}>
+    <SwitchButton size={size} {...props.switchButtonProps}>
+      {composeRenderProps(props.children, (children, renderProps) => (
+        <>
+          <SwitchTrack {...props.switchTrackProps} renderProps={renderProps}>
+            <SwitchHandle {...props.switchHandleProps} />
+          </SwitchTrack>
+          {children}
+        </>
+      ))}
+    </SwitchButton>
+    {description && <Description>{description}</Description>}
+    <FieldError>{errorMessage}</FieldError>
+  </SwitchField>
 );
 
 export {
@@ -116,9 +143,11 @@ export {
   SwitchHandle,
   type SwitchHandleProps,
   switchHandleVariants,
-  SwitchRoot,
-  type SwitchRootProps,
+  SwitchButton,
+  type SwitchButtonProps,
+  switchButtonVariants,
+  SwitchField,
+  type SwitchFieldProps,
   Switch,
   type SwitchProps,
-  switchVariants,
 };
