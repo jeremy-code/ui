@@ -11,6 +11,7 @@ import {
   AccordionPanel,
 } from "@ui/ui/components/Accordion";
 import { Button, buttonVariants } from "@ui/ui/components/Button";
+import { Calendar } from "@ui/ui/components/Calendar";
 import { Checkbox } from "@ui/ui/components/Checkbox";
 import { ComboBox, ComboBoxItem } from "@ui/ui/components/ComboBox";
 import {
@@ -294,6 +295,7 @@ const IndexComponent = () => {
         </Menu>
       </MenuTrigger>
       <SsnField label="Social Security Number" />
+      <Calendar visibleDuration={{ months: 2 }} />
     </div>
   );
 };

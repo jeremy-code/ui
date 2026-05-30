@@ -10,7 +10,7 @@ import {
   CalendarGrid,
   CalendarGridBody,
   CalendarHeaderCell,
-  Heading,
+  CalendarHeading,
   type DateValue,
 } from "react-aria-components/Calendar";
 import { useLocale } from "react-aria-components/I18nProvider";
@@ -60,39 +60,53 @@ const CalendarCell = ({ className, ...props }: CalendarCellProps) => (
   />
 );
 
-type CalendarProps<T extends DateValue> = Omit<
-  AriaCalendarProps<T>,
-  "visibleDuration"
-> & {
+type CalendarProps<T extends DateValue> = {
   errorMessage?: string;
-};
+} & AriaCalendarProps<T>;
 
 const Calendar = <T extends DateValue>({
   errorMessage,
   ...props
 }: CalendarProps<T>) => {
+  const months = props.visibleDuration?.months || 1;
+
   return (
     <AriaCalendar
       {...props}
       className={composeTailwindRenderProps(props.className, [
-        "@container flex w-[calc(--spacing(9)*7)] max-w-full flex-col",
+        "flex max-w-full gap-2",
       ])}
     >
-      <CalendarHeader />
-      <CalendarGrid>
-        <CalendarGridHeader />
-        <CalendarGridBody>
-          {(date) => <CalendarCell date={date} />}
-        </CalendarGridBody>
-      </CalendarGrid>
+      {Array.from({ length: months }, (_, i) => (
+        <div
+          key={i}
+          className="@container flex w-[calc(--spacing(9)*7)] max-w-full flex-col"
+        >
+          <CalendarHeader monthIndex={i} months={months} />
+          <CalendarGrid offset={{ months: i }}>
+            <CalendarGridHeader />
+            <CalendarGridBody>
+              {(date) => <CalendarCell date={date} />}
+            </CalendarGridBody>
+          </CalendarGrid>
+        </div>
+      ))}
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </AriaCalendar>
   );
 };
 
-type CalendarHeaderProps = Omit<ComponentPropsWithRef<"header">, "children">;
+type CalendarHeaderProps = { monthIndex: number; months: number } & Omit<
+  ComponentPropsWithRef<"header">,
+  "children"
+>;
 
-const CalendarHeader = ({ className, ...props }: CalendarHeaderProps) => {
+const CalendarHeader = ({
+  className,
+  monthIndex,
+  months,
+  ...props
+}: CalendarHeaderProps) => {
   const { direction } = useLocale();
   const PreviousIcon = direction === "rtl" ? ChevronRight : ChevronLeft;
   const NextIcon = direction === "rtl" ? ChevronLeft : ChevronRight;
@@ -102,23 +116,30 @@ const CalendarHeader = ({ className, ...props }: CalendarHeaderProps) => {
       className={cn("flex items-center gap-1 px-1 pb-4", className)}
       {...props}
     >
-      <Button
-        variant="ghost"
-        size="icon-xs"
-        className="hover:bg-gray-200 dark:hover:bg-gray-700"
-        slot="previous"
-      >
-        <PreviousIcon aria-hidden size={18} />
-      </Button>
-      <Heading className="mx-2 my-0 flex-1 text-center text-base font-semibold text-fg-boldest [font-variation-settings:normal]" />
-      <Button
-        variant="ghost"
-        size="icon-xs"
-        className="hover:bg-gray-200 dark:hover:bg-gray-700"
-        slot="next"
-      >
-        <NextIcon aria-hidden size={18} />
-      </Button>
+      {monthIndex === 0 && (
+        <Button
+          variant="ghost"
+          size="icon-xs"
+          className="hover:bg-gray-200 dark:hover:bg-gray-700"
+          slot="previous"
+        >
+          <PreviousIcon aria-hidden size={18} />
+        </Button>
+      )}
+      <CalendarHeading
+        offset={{ months: monthIndex }}
+        className="mx-2 my-0 flex-1 text-center font-sans text-base font-semibold text-fg-boldest [font-variation-settings:normal]"
+      />
+      {monthIndex === months - 1 && (
+        <Button
+          variant="ghost"
+          size="icon-xs"
+          className="hover:bg-gray-200 dark:hover:bg-gray-700"
+          slot="next"
+        >
+          <NextIcon aria-hidden size={18} />
+        </Button>
+      )}
     </header>
   );
 };
