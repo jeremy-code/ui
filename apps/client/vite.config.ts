@@ -7,6 +7,7 @@ import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import { fontless } from "fontless";
 import { Features } from "lightningcss";
 import { defineConfig } from "vite";
+import { analyzer } from "vite-bundle-analyzer";
 
 const viteConfig = defineConfig({
   plugins: [
@@ -21,6 +22,7 @@ const viteConfig = defineConfig({
     tailwindcss(),
     fontless(),
     optimizeLocales.vite({ locales: ["en-US"] }),
+    analyzer(),
   ],
   css: {
     transformer: "lightningcss",
