@@ -29,6 +29,7 @@ const viteConfig = defineConfig({
   define: {
     __BUILD_TIMESTAMP__: JSON.stringify(new Date().getTime()),
     __VERSION__: JSON.stringify(version),
+    "import.meta.env.COMMIT_REF": JSON.stringify(process.env.COMMIT_REF),
   },
   css: {
     transformer: "lightningcss",

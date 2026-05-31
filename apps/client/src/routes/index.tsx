@@ -3,7 +3,7 @@ import { Folder, Home, MoreHorizontal, Search, Settings } from "lucide-react";
 import { useListData } from "react-aria-components/useListData";
 
 import { SsnField } from "#components/SsnField";
-import { INITIAL_ITEMS, LONG_INITIAL_ITEMS } from "#constants";
+import { INITIAL_ITEMS, LONG_INITIAL_ITEMS, REPO_URL } from "#constants";
 import {
   Accordion,
   AccordionHeader,
@@ -83,7 +83,7 @@ const IndexComponent = () => {
       <Link
         underline={false}
         className={(renderProps) => buttonVariants(renderProps)}
-        href="https://github.com/jeremy-code/ui"
+        href={REPO_URL}
         target="_blank"
       >
         <Github aria-hidden />

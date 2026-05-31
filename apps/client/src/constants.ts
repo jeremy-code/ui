@@ -17,4 +17,6 @@ const LONG_INITIAL_ITEMS = [
   ...INITIAL_ITEMS,
 ].map((item, index) => ({ ...item, id: index }));
 
-export { type Item, INITIAL_ITEMS, LONG_INITIAL_ITEMS };
+const REPO_URL = "https://github.com/jeremy-code/ui";
+
+export { type Item, INITIAL_ITEMS, LONG_INITIAL_ITEMS, REPO_URL };

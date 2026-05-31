@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useDateFormatter } from "react-aria/useDateFormatter";
 
+import { REPO_URL } from "#constants";
 import {
   DataList,
   DataListItem,
@@ -8,6 +9,7 @@ import {
   DataListItemValue,
 } from "@ui/ui/components/DataList";
 import { Heading } from "@ui/ui/components/Heading";
+import { Link } from "@ui/ui/components/Link";
 
 const StatusComponent = () => {
   const dateFormatter = useDateFormatter({
@@ -34,6 +36,16 @@ const StatusComponent = () => {
           <DataListItemLabel>Version</DataListItemLabel>
           <DataListItemValue>{__VERSION__}</DataListItemValue>
         </DataListItem>
+        {import.meta.env.COMMIT_REF !== undefined && (
+          <DataListItem>
+            <DataListItemLabel>Commit</DataListItemLabel>
+            <DataListItemValue>
+              <Link href={`${REPO_URL}/commit/${import.meta.env.COMMIT_REF}`}>
+                {import.meta.env.COMMIT_REF}
+              </Link>
+            </DataListItemValue>
+          </DataListItem>
+        )}
       </DataList>
     </main>
   );
