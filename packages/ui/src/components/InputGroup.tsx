@@ -1,7 +1,6 @@
 import { type ComponentPropsWithRef, type CSSProperties } from "react";
 
-import { useFocusManager } from "react-aria";
-import { FocusScope } from "react-aria/FocusScope";
+import { FocusScope, useFocusManager } from "react-aria/FocusScope";
 import { mergeProps } from "react-aria/mergeProps";
 import { useHasTabbableChild } from "react-aria/private/focus/useHasTabbableChild";
 import { useField } from "react-aria/useField";
