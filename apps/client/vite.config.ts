@@ -9,6 +9,8 @@ import { Features } from "lightningcss";
 import { defineConfig } from "vite";
 import { analyzer } from "vite-bundle-analyzer";
 
+import { version } from "./package.json" with { type: "json" };
+
 const viteConfig = defineConfig({
   plugins: [
     devtools(),
@@ -24,6 +26,10 @@ const viteConfig = defineConfig({
     optimizeLocales.vite({ locales: ["en-US"] }),
     analyzer(),
   ],
+  define: {
+    __BUILD_TIMESTAMP__: JSON.stringify(new Date().getTime()),
+    __VERSION__: JSON.stringify(version),
+  },
   css: {
     transformer: "lightningcss",
     lightningcss: {
